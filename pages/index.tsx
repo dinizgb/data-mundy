@@ -6,5 +6,5 @@ const Title = styled.h1`
 `
 
 export default function Home() {
-  return <Title>Index Init page</Title>
+  return <Title>Index Development page</Title>
 }
