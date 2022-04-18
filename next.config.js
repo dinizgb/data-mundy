@@ -7,4 +7,13 @@ const nextConfig = {
   },
 }
 
-module.exports = nextConfig
+module.exports = {
+  images: {
+    domains: ['images.ctfassets.net'],
+  },
+  i18n: {
+    locales: ['pt'],
+    defaultLocale: 'pt',
+  },
+  trailingSlash: true,
+};
