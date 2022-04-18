@@ -5,7 +5,7 @@ import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
 import Header from 'components/Header';
 import Footer from 'components/Footer';
-import { H2, P, A } from 'components/Typographies';
+import { H2, P } from 'components/Typographies';
 import { WhiteButton } from 'components/Buttons';
 import HorizontalList from 'components/HorizontalList';
 import TopFiveNews from 'components/TopFiveNews';

@@ -4,6 +4,10 @@ import styled from 'styled-components';
 import MenuIcon from '@material-ui/icons/Menu';
 import MobileMenu from './MobileMenu';
 
+type NavProps = {
+  display: string;
+}
+
 const NavContainer = styled.nav`
   float: right;
   @media (max-width: 768px){
@@ -44,7 +48,7 @@ const NavLiMobile = styled.li`
   }
 `;
 
-const MenuOverlay = styled.div`
+const MenuOverlay = styled.div<NavProps>`
     position: fixed;
     top: 0;
     left: 0;

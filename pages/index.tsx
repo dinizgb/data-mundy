@@ -7,12 +7,11 @@ import Header from 'components/Header';
 import Footer from 'components/Footer';
 import { H2, P, A } from 'components/Typographies';
 import { WhiteButton } from 'components/Buttons';
-import Stories from 'components/Stories';
 import HorizontalList from 'components/HorizontalList';
 import TopFiveNews from 'components/TopFiveNews';
 import DonateWidget from 'components/DonateWidget';
 
-export default function Home() {
+export default function Home() { //TODO: Transform this into a Home Component
   return (
     <>
     <Head>
@@ -74,20 +73,6 @@ export default function Home() {
           <Grid container columnSpacing={{ xs: 1, sm: 3, md: 5 }} style={{ marginTop: 80 }}>
             <Grid item xs={12} sm={12} md={8}>
               <Grid container>
-                <Grid item xs={12}>
-                  <H2
-                  fontColor={({ theme }) => theme.colors.text_4}
-                  fontWeight={600}
-                  fontSize={22}
-                  lineHeight={21}
-                  xsFontSize={21}
-                  xsLineHeight={24}
-                  margin={0}
-                  >
-                  Trending
-                  </H2>
-                  <Stories />
-                </Grid>
                 <Grid item xs={12} style={{ marginTop: 40 }}>
                   <H2
                   fontColor={({ theme }) => theme.colors.text_4}

@@ -1,9 +1,13 @@
 import * as React from 'react';
 import styled from 'styled-components';
-import { H2, H3, A } from 'components/Typographies';
+import { H2, H3 } from 'components/Typographies';
 import { PrimaryButton } from 'components/Buttons';
 
-const DonateWidgetWrapper = styled.div`
+type DonateWidgetWrapperProps = {
+  margin?: any;
+}
+
+const DonateWidgetWrapper = styled.div<DonateWidgetWrapperProps>`
     width: 100%;
     position: -webkit-sticky;
     position: sticky;

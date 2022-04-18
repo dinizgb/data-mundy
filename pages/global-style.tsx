@@ -7,8 +7,8 @@ const GlobalStyle = createGlobalStyle`
         font-weight: 400;
         font-size: 20px;
         line-height: 30px;
-        background-color: ${({ theme }) => theme.colors.background};
-        color: ${({ theme }) => theme.colors.text_4};
+        background-color: #151515;
+        color: #fff;
     }
     body {
         overflow-x: hidden;
@@ -53,12 +53,12 @@ const GlobalStyle = createGlobalStyle`
         font-family: 'Lato', sans-serif;
     }
     .desktop-only{
-        @media (max-width: ${({ theme }) => theme.breakpoints.md}px){
+        @media (max-width: 900px){
             display: none;
         }
     }
     .mobile-only{
-        @media (max-width: ${({ theme }) => theme.breakpoints.md}px){
+        @media (max-width: 900px){
             display: block;
         }
     }

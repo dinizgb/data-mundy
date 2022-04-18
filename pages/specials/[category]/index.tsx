@@ -5,7 +5,7 @@ import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
 import Header from 'components/Header';
 import Footer from 'components/Footer';
-import { H2, P, A } from 'components/Typographies';
+import { H2, P } from 'components/Typographies';
 import { WhiteButton } from 'components/Buttons';
 import HorizontalList from 'components/HorizontalList';
 import TopFiveNews from 'components/TopFiveNews';
@@ -28,6 +28,7 @@ export default function SpecialsCategoryHome() { //TODO: Transform the content o
         <Box sx={{ width: '100%' }}>
           <Grid container columnSpacing={{ xs: 1, sm: 2, md: 3 }} style={{ marginTop: 50 }}>
             <Grid item xs={12} sm={12} md={9}>
+              //TODO: Olhar elementos que estão 'sobrando no typing: "padding..."'
               <H2
               fontType={'MainTitle'}
               fontColor={({ theme }) => theme.colors.text_4}

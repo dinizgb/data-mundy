@@ -1,6 +1,13 @@
 import styled from 'styled-components';
 
-export const PrimaryButton = styled.a`
+type ButtonProps = {
+  width: string;
+  fontSize?: number;
+  padding?: string;
+  margin?: string;
+}
+
+export const PrimaryButton = styled.a<ButtonProps>`
   width: ${(props) => props.width};
   color: ${({ theme }) => theme.colors.text_4};
   font-size: ${(props) => props.fontSize}px;
@@ -16,7 +23,7 @@ export const PrimaryButton = styled.a`
   }
 `;
 
-export const WhiteButton = styled.a`
+export const WhiteButton = styled.a<ButtonProps>`
   width: ${(props) => props.width};
   color: ${({ theme }) => theme.colors.text_4};
   font-size: 21px;

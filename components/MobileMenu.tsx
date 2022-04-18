@@ -1,7 +1,11 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const MenuContainer = styled.div`
+type MobileMenuProps = {
+    display: string;
+}
+
+const MenuContainer = styled.div<MobileMenuProps>`
     position: fixed;
     top: 0;
     left: 0;
@@ -61,10 +65,6 @@ const MenuItem = styled.li`
         }
     }
 `;
-
-type MobileMenuProps = {
-    display: string
-}
 
 export default function MobileMenu(props: MobileMenuProps) {
     return (

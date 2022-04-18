@@ -2,10 +2,14 @@ import * as React from 'react';
 import styled from 'styled-components';
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
-import { H3, H4, A } from 'components/Typographies';
+import { H3, H4 } from 'components/Typographies';
 import Image from 'next/image';
 
-const SmallHorizontalCardWrapper = styled.div`
+type SmallHorizontalCardProps = {
+    margin?: any;
+}
+
+const SmallHorizontalCardWrapper = styled.div<SmallHorizontalCardProps>`
     width: 100%;
     position: relative;
     margin: ${(props) => props.margin};

@@ -1,19 +1,19 @@
 import styled from 'styled-components';
 
 type TypographyProps = {
-  fontType: string;
-  fontColor: string;
+  fontType?: string;
+  fontColor: any;
   fontWeight: number;
   fontSize: number;
   lineHeight: number;
-  margin: any;
-  padding: any;
-  smFontSize: number;
-  smLineHeight: number;
-  xsFontSize: number;
-  xsLineHeight: number;
-  borderBottom: string;
-  hoverColor: string;
+  margin?: any;
+  padding?: any;
+  smFontSize?: number;
+  smLineHeight?: number;
+  xsFontSize?: number;
+  xsLineHeight?: number;
+  borderBottom?: string;
+  hoverColor?: any;
 }
 
 export const H1 = styled.h1<TypographyProps>`

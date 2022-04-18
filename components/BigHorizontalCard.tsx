@@ -6,7 +6,11 @@ import { H3, H4, A } from 'components/Typographies';
 import Avatar from '@mui/material/Avatar';
 import Image from 'next/image';
 
-const BigHorizontalCardWrapper = styled.div`
+type BigHorizontalCardProps = {
+    margin?: any;
+}
+
+const BigHorizontalCardWrapper = styled.div<BigHorizontalCardProps>`
     width: 100%;
     position: relative;
     margin: ${(props) => props.margin};

@@ -1,9 +1,14 @@
 import * as React from 'react';
 import styled from 'styled-components';
-import { H2, A } from 'components/Typographies';
+import { H2 } from 'components/Typographies';
 import SmallHorizontalCard from './SmallHorizontalCard';
 
-const TopFiveNewsWrapper = styled.div`
+type TopFiveNewsWrapperProps = {
+  margin?: any;
+  xsMargin?: any;
+}
+
+const TopFiveNewsWrapper = styled.div<TopFiveNewsWrapperProps>`
     width: 100%;
     position: relative;
     margin: ${(props) => props.margin};
