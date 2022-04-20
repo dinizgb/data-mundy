@@ -9,11 +9,11 @@ const nextConfig = {
 
 module.exports = {
   images: {
-    domains: ['images.ctfassets.net'],
+    domains: ['wp.crdps.xyz'],
   },
   i18n: {
-    locales: ['pt'],
-    defaultLocale: 'pt',
+    locales: ['eng', 'US'],
+    defaultLocale: 'eng',
   },
   trailingSlash: true,
 };
