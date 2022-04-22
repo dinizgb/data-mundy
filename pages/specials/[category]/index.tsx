@@ -7,7 +7,6 @@ import Header from 'components/Header';
 import Footer from 'components/Footer';
 import { H2, P } from 'components/Typographies';
 import { WhiteButton } from 'components/Buttons';
-import HorizontalList from 'components/HorizontalList';
 import TopFiveNews from 'components/TopFiveNews';
 import DonateWidget from 'components/DonateWidget';
 
@@ -60,7 +59,7 @@ export default function SpecialsCategoryHome() { //TODO: Transform the content o
             <Grid item xs={12} sm={12} md={8}>
               <Grid container>
                 <Grid item xs={12} style={{ marginTop: 41 }}>
-                  <HorizontalList />
+                  [--- LIST ---]
                   <Grid item xs={12} className="desktop-only">
                     <div style={{ display: 'flex' }}>
                       <WhiteButton href="https://datamundy.com/charts" width={`100%`} margin={`0 0 30px 0`}>See More</WhiteButton>

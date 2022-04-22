@@ -2,15 +2,27 @@ import * as React from 'react';
 import styled from 'styled-components';
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
-import { H3, H4, A } from 'components/Typographies';
+import { H3, H4, Span } from 'components/Typographies';
 import Avatar from '@mui/material/Avatar';
 import Image from 'next/image';
 
 type BigHorizontalCardProps = {
+    key: string;
+    cardImage: string;
+    cardSection: string;
+    cardCategory: string;
+    cardCategorySlug: string;
+    cardTitle: string;
+    cardSlug: string;
+    cardExcerpt: string;
     margin?: any;
 }
 
-const BigHorizontalCardWrapper = styled.div<BigHorizontalCardProps>`
+type BigHorizontalCardWrapperProps = {
+    margin?: any;
+}
+
+const BigHorizontalCardWrapper = styled.div<BigHorizontalCardWrapperProps>`
     width: 100%;
     position: relative;
     margin: ${(props) => props.margin};
@@ -22,16 +34,17 @@ const BigHorizontalCardWrapper = styled.div<BigHorizontalCardProps>`
 `;
 
 const BigHorizontalCardText = styled.div`
+    margin-top: 25px;
     @media (max-width: ${({ theme }) => theme.breakpoints.sm}px){
         width: 90%;
-        margin-top: 0;
+        margin-top: 10px;
         margin-left: auto;
         margin-right: auto;
         h3{ 
-            margin-top: 20px;
+            margin-top: 5px;
             margin-left: 0;
         }
-        h4{
+        h4, span{
             margin-left: 0;
         }
     }
@@ -69,9 +82,9 @@ const BigHorizontalCardThumb = styled.div`
     }
 `;
 
-export default function BigHorizontalCard(props) {
+export default function BigHorizontalCard(props: BigHorizontalCardProps) {
     return (
-        <a href="https://www.google.com/">
+        <a href={`/${props.cardSection}/${props.cardCategorySlug}/${props.cardSlug}/`}>
             <BigHorizontalCardWrapper margin={props.margin}>
                 <Box sx={{ width: '100%' }}>
                     <Grid container columnSpacing={{ xs: 1, sm: 3, md: 4 }}>
@@ -79,6 +92,15 @@ export default function BigHorizontalCard(props) {
                             <BigHorizontalCardText>
                                 <Grid container>
                                     <Grid item xs={12}>
+                                        <Span
+                                        fontColor={({ theme }) => theme.colors.text_2}
+                                        fontWeight={500}
+                                        fontSize={15}
+                                        lineHeight={24}
+                                        xsFontSize={15}
+                                        xsLineHeight={24}
+                                        margin={`0 0 0 40px`}
+                                        >{props.cardCategory}</Span>
                                         <H3
                                         fontColor={({ theme }) => theme.colors.text_4}
                                         fontWeight={400}
@@ -86,9 +108,9 @@ export default function BigHorizontalCard(props) {
                                         lineHeight={36}
                                         xsFontSize={21}
                                         xsLineHeight={36}
-                                        margin={`40px 0 0 40px`}
+                                        margin={`5px 0 0 40px`}
                                         >
-                                            Data Mundy releases a website to users to help them find the best data sources
+                                            {props.cardTitle}
                                         </H3>
                                         <H4
                                         fontColor={({ theme }) => theme.colors.text_2}
@@ -98,15 +120,14 @@ export default function BigHorizontalCard(props) {
                                         xsFontSize={16}
                                         xsLineHeight={30}
                                         margin={`10px 0 0 40px`}
-                                        >
-                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent fringilla dignissim quam. 
-                                            Integer lobortis vel eros vel placerat. Sed erat nibh, iaculis id sapien id, lacinia condimentum neque.
-                                        </H4>
+                                        dangerouslySetInnerHTML={{
+                                            __html: props.cardExcerpt
+                                        }} />
                                     </Grid>
                                     <Grid item xs={12} sm={6} md={6}>
                                         <BigHorizontalCardAuthor>
                                             <Avatar alt="Autor Avatar" src="/images/dm-logo.jpg" />
-                                            <A
+                                            <Span
                                             fontColor={({ theme }) => theme.colors.text_4}
                                             hoverColor={({ theme }) => theme.colors.text_3}
                                             fontWeight={400}
@@ -115,10 +136,7 @@ export default function BigHorizontalCard(props) {
                                             xsFontSize={15}
                                             xsLineHeight={24}
                                             margin={`5px 0 0 10px`}
-                                            padding={0}
-                                            borderBottom={`none`}
-                                            href="https://datamundy.com/about"
-                                            >Data Mundy Staff</A>
+                                            >Data Mundy Staff</Span>
                                         </BigHorizontalCardAuthor>
                                     </Grid>
                                 </Grid>
@@ -127,8 +145,8 @@ export default function BigHorizontalCard(props) {
                         <Grid item xs={12} sm={6} md={6}>
                             <BigHorizontalCardThumb>
                                 <Image
-                                    src={"/images/image-placeholder.jpg"}
-                                    alt={`Card Alt`}
+                                    src={props.cardImage}
+                                    alt={props.cardTitle}
                                     layout="fill"
                                     objectFit="cover"
                                 />

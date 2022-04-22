@@ -1,10 +1,10 @@
 import * as React from 'react';
-import ArticleFormat from 'components/ArticleFormat';
+import ChartFormat from 'components/ChartFormat';
 
-export default function ChartsArticlePage() { //TODO: Transform the content of this page into a component
+export default function ChartFormatPage() { //TODO: Transform the content of this page into a component
   return (
     <>
-      <ArticleFormat />
+      <ChartFormat />
     </>
   );
 }
