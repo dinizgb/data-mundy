@@ -66,7 +66,9 @@ export default function Nav() {
   return (
     <NavContainer>
         <NavUl>
-            <NavLi><a href="/news/lifestyle">Lifestyle</a></NavLi>
+            <NavLi><a href="/news/">News</a></NavLi>
+            <NavLi><a href="/charts/">Charts</a></NavLi>
+            <NavLi><a href="/specials/">Specials</a></NavLi>
             <NavLiMobile onClick={toggleMobileMenu}><MenuIcon/></NavLiMobile>
             <MobileMenu display={showMobileMenu ? "block" : "none"} />
             <MenuOverlay display={showMobileMenu ? "block" : "none"} onClick={toggleMobileMenu} />

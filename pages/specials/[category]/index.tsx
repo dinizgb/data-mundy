@@ -21,7 +21,7 @@ export default function SpecialsCategoryHome() { //TODO: Transform the content o
       <meta name="twitter:text:title" content="News Home Page" />
       <link rel="canonical" href="https://datamundy.com/" />
     </Head>
-    <Header />
+    <Header data-testid="header-component" />
     <main>
       <Container maxWidth="xl">
         <Box sx={{ width: '100%' }}>

@@ -21,7 +21,7 @@ export default function SpecialsHome() { //TODO: Use LayoutListWithAside instead
       <meta name="twitter:text:title" content="Specials Home Page" />
       <link rel="canonical" href="https://datamundy.com/" />
     </Head>
-    <Header />
+    <Header data-testid="header-component" />
     <main>
       <Container maxWidth="xl">
         <Box sx={{ width: '100%' }}>

@@ -1,10 +1,10 @@
 import * as React from 'react';
 import ArticleFormat from 'components/ArticleFormat';
-import { fetchSingleNews } from 'services/news/fetchSingleNews';
-import { fetchSingleNewsPaths } from 'services/news/fetchSingleNewsPaths';
+import { fetchSingle } from 'services/core/fetchSingle';
+import { fetchPaths } from 'services/core/fetchPaths';
 
-export default function NewsArticlePage({ singlePostData }) {
-  const articleData = singlePostData[0];
+export default function NewsArticlePage({ response }) {
+  const articleData = response[0];
 
   return (
     <>
@@ -22,9 +22,9 @@ export default function NewsArticlePage({ singlePostData }) {
 }
 
 export async function getStaticProps(context) {
-  return fetchSingleNews(context.params.slug);
+  return fetchSingle('posts', `slug=${context.params.slug}`);
 }
 
 export async function getStaticPaths() {
-  return fetchSingleNewsPaths();
+  return fetchPaths('posts', 2);
 }

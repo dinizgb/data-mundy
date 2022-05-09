@@ -5,12 +5,18 @@ import Image from 'next/image';
 import Container from '@mui/material/Container';
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
-import Avatar from '@mui/material/Avatar';
+import Breadcrumbs from '@mui/material/Breadcrumbs';
 import Header from 'components/Header';
 import Footer from 'components/Footer';
 import { H2, P, A, Span } from 'components/Typographies';
+import { ContentBody } from 'components/ContentBody';
+import ChartLinearGradient from 'components/ChartLinearGradient';
+import ChartDoughnutPie from 'components/ChartDoughnutPie';
+import ChartMultipleLines from 'components/ChartMultipleLines';
+import ChartBars from 'components/ChartBars';
+import formatDate from 'utils/formatDate';
 
-const ArticleFormatThumb = styled.div`
+const ChartFormatThumb = styled.div`
     width: 100%;
     height: 100%;
     position: relative;
@@ -27,7 +33,7 @@ const ArticleFormatThumb = styled.div`
     }
 `;
 
-const ArticleFormatAuthor = styled.div`
+const ChartFormatAuthor = styled.div`
     width: 100%;
     margin-top: 20px;
     margin-bottom: 30px;
@@ -39,82 +45,199 @@ const ArticleFormatAuthor = styled.div`
     }
 `;
 
-export default function ChartFormat() {
+const ChartFormatMain = styled.main`
+    .MuiBreadcrumbs-separator{
+      color: ${({ theme }) => theme.colors.text_2};
+    }
+`;
+
+type ChartFormatProps = {
+  chartTitle: string;
+  chartExcerpt: string;
+  chartDate: string;
+  chartFeaturedImage: string;
+  chartContent: string;
+  chartACFData: any;
+}
+
+export default function ChartFormat(props: ChartFormatProps) { //TODO: Transform metas into a SEO Component
+
+  const chartComponent = ( //TODO: Find a way to Reduce this code
+  props.chartACFData.chart_type == 'vertical_bars' ?
+    <ChartBars 
+    chartTitle={props.chartTitle}
+    chartSubtitle={props.chartExcerpt}
+    chartOrientation={'x'}
+    xValues={props.chartACFData.bars_chart.xvalues}
+    yValues={props.chartACFData.bars_chart.yvalues}
+    barColors={props.chartACFData.bars_chart.bar_colors}
+    margin={props.chartACFData.bars_chart.margin}
+    canvasHeight={props.chartACFData.bars_chart.canvas_height}
+    />
+  :
+  props.chartACFData.chart_type == 'horizontal_bars' ?
+    <ChartBars 
+    chartTitle={props.chartTitle}
+    chartSubtitle={props.chartExcerpt}
+    chartOrientation={'y'}
+    xValues={props.chartACFData.bars_chart.xvalues}
+    yValues={props.chartACFData.bars_chart.yvalues}
+    barColors={props.chartACFData.bars_chart.bar_colors}
+    margin={props.chartACFData.bars_chart.margin}
+    canvasHeight={props.chartACFData.bars_chart.canvas_height}
+    />
+  :
+  props.chartACFData.chart_type == 'doughnut' ?
+    <ChartDoughnutPie 
+    chartTitle={props.chartTitle}
+    chartSubtitle={props.chartExcerpt}
+    chartType={props.chartACFData.chart_type}
+    xValues={props.chartACFData.doughnut_pie_chart.xvalues}
+    yValues={props.chartACFData.doughnut_pie_chart.yvalues}
+    colors={props.chartACFData.doughnut_pie_chart.colors}
+    margin={props.chartACFData.doughnut_pie_chart.margin}
+    canvasHeight={props.chartACFData.doughnut_pie_chart.canvas_height}
+    /> 
+  :
+  props.chartACFData.chart_type == 'pie' ?
+    <ChartDoughnutPie 
+    chartTitle={props.chartTitle}
+    chartSubtitle={props.chartExcerpt}
+    chartType={props.chartACFData.chart_type}
+    xValues={props.chartACFData.doughnut_pie_chart.xvalues}
+    yValues={props.chartACFData.doughnut_pie_chart.yvalues}
+    colors={props.chartACFData.doughnut_pie_chart.colors}
+    margin={props.chartACFData.doughnut_pie_chart.margin}
+    canvasHeight={props.chartACFData.doughnut_pie_chart.canvas_height}
+    /> 
+  :
+  props.chartACFData.chart_type == 'multiple_lines' ?
+    <ChartMultipleLines 
+    chartTitle={props.chartTitle}
+    chartSubtitle={props.chartExcerpt}
+    xValues={props.chartACFData.multiple_lines_chart.xvalues}
+    yValues={props.chartACFData.multiple_lines_chart.yvalues}
+    margin={props.chartACFData.multiple_lines_chart.margin}
+    canvasHeight={props.chartACFData.multiple_lines_chart.canvas_height}
+    />  
+  :
+  props.chartACFData.chart_type == 'singleline' ?
+    <ChartLinearGradient 
+    chartTitle={props.chartTitle}
+    chartSubtitle={props.chartExcerpt}
+    lineColor={props.chartACFData.single_line_chart.line_color}
+    dataSet={props.chartACFData.single_line_chart.dataset}
+    xValues={props.chartACFData.single_line_chart.xvalues}
+    yValues={props.chartACFData.single_line_chart.yvalues}
+    canvasHeight={props.chartACFData.single_line_chart.canvas_height}
+    margin={props.chartACFData.single_line_chart.margin}
+    /> 
+  :
+  'A problem occured, we are sorry for the inconvenience. We are working on it.' 
+  );
+
   return (
     <>
     <Head>
-      <title>Data Mundy | News Article Page | Providing Data from and to an amazing World</title>
-      <meta name="description" content="Data Mundy is an open source platform that provides different types of data to make scientific divulgation more easy for those who do it."/>
-      <meta property="og:title" content="Data Mundy | Providing Data from and to an amazing World" key="title"/>
-      <meta property="og:description" content="Data Mundy is an open source platform that provides different types of data to make scientific divulgation more easy for those who do it."/>
-      <meta name="twitter:text:title" content="News Article Page" />
+      <title>Data Mundy | {props.chartTitle} | Providing Data from and to an amazing World</title>
+      <meta name="description" content={props.chartExcerpt} /> 
+      <meta property="og:title" content={props.chartTitle} key="title"/>
+      <meta property="og:description" content={props.chartExcerpt} />
+      <meta name="twitter:text:title" content={props.chartTitle} />
       <link rel="canonical" href="https://datamundy.com/" />
     </Head>
-    <Header />
-    <main>
+    <Header data-testid="header-component" />
+    <ChartFormatMain>
       <Container maxWidth="xl">
         <Box sx={{ width: '100%' }}>
           <Grid container columnSpacing={{ xs: 1, sm: 2, md: 3 }} style={{ marginTop: 50 }}>
             <Grid item xs={12} sm={12} md={6}>
-                <H2
-                fontType={'MainTitle'}
-                fontColor={({ theme }) => theme.colors.text_4}
-                fontWeight={400}
-                fontSize={76}
-                lineHeight={100}
-                xsFontSize={60}
-                xsLineHeight={70}
+              <Breadcrumbs separator="›" aria-label="breadcrumb">
+                <A
+                fontColor={({ theme }) => theme.colors.text_2}
+                hoverColor={({ theme }) => theme.colors.text_4}
+                fontWeight={500}
+                fontSize={15}
+                lineHeight={24}
+                xsFontSize={15}
+                xsLineHeight={24}
                 margin={0}
+                href="/"
                 >
-                This is the Headline of the News Article Page for the News Section Area
-                </H2>
-                <P
-                fontColor={({ theme }) => theme.colors.text_4}
-                fontWeight={300}
-                fontSize={24}
-                lineHeight={40}
-                xsFontSize={21}
-                xsLineHeight={36}
-                margin={`30px 0`}
+                  Home
+                </A>
+                <A
+                fontColor={({ theme }) => theme.colors.text_2}
+                hoverColor={({ theme }) => theme.colors.text_4}
+                fontWeight={500}
+                fontSize={15}
+                lineHeight={24}
+                xsFontSize={15}
+                xsLineHeight={24}
+                margin={0}
+                href="/charts/"
                 >
-                    Data Mundy is an open source platform that provides different types.
-                </P>
-                <ArticleFormatAuthor>
-                    <Avatar alt="Autor Avatar" src="/images/dm-logo.jpg" />
-                    <A
-                    fontColor={({ theme }) => theme.colors.text_4}
-                    hoverColor={({ theme }) => theme.colors.text_3}
-                    fontWeight={600}
-                    fontSize={15}
-                    lineHeight={24}
-                    xsFontSize={15}
-                    xsLineHeight={24}
-                    margin={`5px 0 0 10px`}
-                    padding={0}
-                    borderBottom={`none`}
-                    href="https://datamundy.com/about"
-                    >Data Mundy Staff</A>
-                    <Span
-                    fontColor={({ theme }) => theme.colors.text_4}
-                    fontWeight={400}
-                    fontSize={15}
-                    lineHeight={24}
-                    xsFontSize={15}
-                    xsLineHeight={24}
-                    margin={`4px 0 0 5px`}
-                    >- 02/02/2022 at 9pm
-                    </Span>
-                </ArticleFormatAuthor>
+                  Charts
+                </A>
+                <A
+                fontColor={({ theme }) => theme.colors.text_2}
+                hoverColor={({ theme }) => theme.colors.text_4}
+                fontWeight={500}
+                fontSize={15}
+                lineHeight={24}
+                xsFontSize={15}
+                xsLineHeight={24}
+                margin={0}
+                href={`/charts/${props.chartACFData.chart_category_data.post_name}/`}
+                >
+                  {props.chartACFData.chart_category_data.post_title}
+                </A>
+              </Breadcrumbs>
+              <H2
+              fontType={'MainTitle'}
+              fontColor={({ theme }) => theme.colors.text_4}
+              fontWeight={400}
+              fontSize={76}
+              lineHeight={100}
+              xsFontSize={60}
+              xsLineHeight={70}
+              margin={0}
+              >
+              {props.chartTitle}
+              </H2>
+              <P
+              fontColor={({ theme }) => theme.colors.text_4}
+              fontWeight={300}
+              fontSize={24}
+              lineHeight={40}
+              xsFontSize={21}
+              xsLineHeight={36}
+              margin={`30px 0`}
+              >
+                {props.chartExcerpt}
+              </P>
+              <ChartFormatAuthor>
+                  <Span
+                  fontColor={({ theme }) => theme.colors.text_4}
+                  fontWeight={400}
+                  fontSize={15}
+                  lineHeight={24}
+                  xsFontSize={15}
+                  xsLineHeight={24}
+                  margin={`4px 0 0 5px`}
+                  >Last updated at {formatDate(props.chartDate)}
+                  </Span>
+              </ChartFormatAuthor>
             </Grid>
             <Grid item xs={12} sm={12} md={6}>
-                <ArticleFormatThumb>
-                    <Image
-                    src={"/images/image-placeholder.jpg"}
-                    alt={`Card Alt`}
-                    layout="fill"
-                    objectFit="cover"
-                    />
-                </ArticleFormatThumb>
+                <ChartFormatThumb>
+                  <Image
+                  src={props.chartFeaturedImage}
+                  alt={props.chartTitle}
+                  layout="fill"
+                  objectFit="cover"
+                  />
+                </ChartFormatThumb>
             </Grid>
           </Grid>
         </Box>
@@ -123,85 +246,18 @@ export default function ChartFormat() {
             <Grid item xs={12} sm={12} md={9} style={{ marginLeft: 'auto', marginRight: 'auto' }}>
               <Grid container>
                 <Grid item xs={12} style={{ marginTop: 41 }}>
-                    <P
-                    fontColor={({ theme }) => theme.colors.text_4}
-                    fontWeight={400}
-                    fontSize={18}
-                    lineHeight={36}
-                    xsFontSize={18}
-                    xsLineHeight={36}
-                    margin={`30px 0`}
-                    >
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean laoreet quam vel ipsum semper tempor. 
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
-                        Sed quis enim a velit lobortis scelerisque ut sit amet sem. 
-                        Nunc quis mattis urna. Nam felis orci, dictum eu faucibus eu, sodales in quam. 
-                        Curabitur eget interdum nisi. Curabitur finibus congue convallis. 
-                        Nam tristique maximus rutrum. Pellentesque eget erat felis. 
-                        Ut vel dolor pulvinar, rhoncus ante sit amet, viverra felis. 
-                        Ut fermentum hendrerit neque a tincidunt.
-                    </P>
-                    <P
-                    fontColor={({ theme }) => theme.colors.text_4}
-                    fontWeight={400}
-                    fontSize={18}
-                    lineHeight={36}
-                    xsFontSize={18}
-                    xsLineHeight={36}
-                    margin={`30px 0`}
-                    >
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean laoreet quam vel ipsum semper tempor. 
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
-                        Sed quis enim a velit lobortis scelerisque ut sit amet sem. 
-                        Nunc quis mattis urna. Nam felis orci, dictum eu faucibus eu, sodales in quam. 
-                        Curabitur eget interdum nisi. Curabitur finibus congue convallis. 
-                        Nam tristique maximus rutrum. Pellentesque eget erat felis. 
-                        Ut vel dolor pulvinar, rhoncus ante sit amet, viverra felis. 
-                        Ut fermentum hendrerit neque a tincidunt.
-                    </P>
-                    <P
-                    fontColor={({ theme }) => theme.colors.text_4}
-                    fontWeight={400}
-                    fontSize={18}
-                    lineHeight={36}
-                    xsFontSize={18}
-                    xsLineHeight={36}
-                    margin={`30px 0`}
-                    >
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean laoreet quam vel ipsum semper tempor. 
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
-                        Sed quis enim a velit lobortis scelerisque ut sit amet sem. 
-                        Nunc quis mattis urna. Nam felis orci, dictum eu faucibus eu, sodales in quam. 
-                        Curabitur eget interdum nisi. Curabitur finibus congue convallis. 
-                        Nam tristique maximus rutrum. Pellentesque eget erat felis. 
-                        Ut vel dolor pulvinar, rhoncus ante sit amet, viverra felis. 
-                        Ut fermentum hendrerit neque a tincidunt.
-                    </P>
-                    <P
-                    fontColor={({ theme }) => theme.colors.text_4}
-                    fontWeight={400}
-                    fontSize={18}
-                    lineHeight={36}
-                    xsFontSize={18}
-                    xsLineHeight={36}
-                    margin={`30px 0`}
-                    >
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean laoreet quam vel ipsum semper tempor. 
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
-                        Sed quis enim a velit lobortis scelerisque ut sit amet sem. 
-                        Nunc quis mattis urna. Nam felis orci, dictum eu faucibus eu, sodales in quam. 
-                        Curabitur eget interdum nisi. Curabitur finibus congue convallis. 
-                        Nam tristique maximus rutrum. Pellentesque eget erat felis. 
-                        Ut vel dolor pulvinar, rhoncus ante sit amet, viverra felis. 
-                        Ut fermentum hendrerit neque a tincidunt.
-                    </P>
+                  <ContentBody dangerouslySetInnerHTML={{
+                      __html: props.chartContent
+                    }}
+                  />
+                  {chartComponent}
                 </Grid>
               </Grid>
             </Grid>
           </Grid>
         </Box>
       </Container>
-    </main>
+    </ChartFormatMain>
     <Footer />
     </>
   );

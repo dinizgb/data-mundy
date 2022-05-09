@@ -1,10 +1,10 @@
 import LayoutListWithAside from 'components/LayoutListWithAside';
-import { fetchListNews } from 'services/news/fetchListNews';
+import { fetchSingle } from 'services/core/fetchSingle';
 
-export default function NewsHome({ listPostData }) {
+export default function NewsHome({ response }) {
   return (
     <LayoutListWithAside
-    postData={listPostData} 
+    postData={response} 
     layoutSection={`news`}
     layoutTitle={`News`}
     layoutSlug={``}
@@ -14,5 +14,5 @@ export default function NewsHome({ listPostData }) {
 }
 
 export async function getStaticProps() {
-  return fetchListNews(15);
+  return fetchSingle('posts', 'per_page=10');
 }

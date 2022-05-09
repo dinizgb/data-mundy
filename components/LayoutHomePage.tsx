@@ -9,19 +9,26 @@ import { H2, P, A } from 'components/Typographies';
 import { WhiteButton } from 'components/Buttons';
 import TopFiveNews from 'components/TopFiveNews';
 import DonateWidget from 'components/DonateWidget';
+import BigHorizontalCardList from 'components/BigHorizontalCardList';
 
-export default function LayoutHomePage() {
+type LayoutHomePageProps = {
+    postData: any;
+    chartData: any;
+    layoutDescription: string;
+}
+
+export default function LayoutHomePage(props: LayoutHomePageProps) {
     return (
         <>
             <Head>
-                <title>Data Mundy | Providing Data from and to an amazing World</title>
-                <meta name="description" content="Data Mundy is an open source platform that provides different types of data to make scientific divulgation more easy for those who do it."/>
-                <meta property="og:title" content="Data Mundy | Providing Data from and to an amazing World" key="title"/>
-                <meta property="og:description" content="Data Mundy is an open source platform that provides different types of data to make scientific divulgation more easy for those who do it."/>
-                <meta name="twitter:text:title" content="Home Page" />
+                <title>{`Data Mundy | ${props.layoutDescription}`}</title>
+                <meta name="description" content={props.layoutDescription} />
+                <meta property="og:title" content={`Data Mundy | ${props.layoutDescription}`} key="title"/>
+                <meta property="og:description" content={props.layoutDescription} />
+                <meta name="twitter:text:title" content={`Data Mundy | ${props.layoutDescription}`} />
                 <link rel="canonical" href="https://datamundy.com/" />
             </Head>
-            <Header />
+            <Header data-testid="header-component" />
             <main>
             <Container maxWidth="xl">
                 <Box sx={{ width: '100%' }}>
@@ -84,18 +91,24 @@ export default function LayoutHomePage() {
                         >
                         Latest Charts
                         </H2>
-                        [--- LIST ---]
+                        <BigHorizontalCardList 
+                        postList={props.chartData}
+                        layoutSection={'charts'}
+                        />
                         <Grid item xs={12} className="desktop-only">
                             <div style={{ display: 'flex' }}>
-                                <WhiteButton href="https://datamundy.com/charts" width={`100%`} margin={`0 0 30px 0`}>See More</WhiteButton>
+                                <WhiteButton href="/charts/" width={`100%`} margin={`0 0 30px 0`}>See More</WhiteButton>
                             </div>
                         </Grid>
                         </Grid>
                     </Grid>
                     </Grid>
                     <Grid item xs={12} sm={12} md={4}>
-                    <TopFiveNews margin={`40px 0 0 0`} xsMargin={`20px 0 0 0`} />
-                    <DonateWidget margin={`30px 0 0 0`} />
+                        <TopFiveNews 
+                        margin={`40px 0 0 0`} 
+                        xsMargin={`20px 0 0 0`} 
+                        />
+                        <DonateWidget margin={`30px 0 0 0`} />
                     </Grid>
                 </Grid>
                 </Box>

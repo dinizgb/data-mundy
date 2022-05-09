@@ -1,13 +1,11 @@
 import LayoutListWithAside from 'components/LayoutListWithAside';
-import { fetchListSingleCategoryNews } from 'services/news/fetchListSingleCategoryNews';
-import { fetchCategoryNewsPaths } from 'services/news/fetchCategoryNewsPaths';
+import { fetchSingleByCategory } from 'services/core/fetchSingleByCategory';
+import { fetchPaths } from 'services/core/fetchPaths';
 
-export default function NewsCategoryHome({ categoryData, listPostData }) {
-  const postsList = listPostData;
-
+export default function NewsCategoryHome({ categoryData, listSingleData }) {
   return (
     <LayoutListWithAside
-    postData={postsList}
+    postData={listSingleData}
     layoutSection={`news`}
     layoutTitle={categoryData[0].name}
     layoutSlug={categoryData[0].slug}
@@ -17,9 +15,9 @@ export default function NewsCategoryHome({ categoryData, listPostData }) {
 }
 
 export async function getStaticProps(context) {
-  return fetchListSingleCategoryNews(context.params.category, 15);
+  return fetchSingleByCategory('categories', `slug=${context.params.category}`, 'posts', 'categories', 'per_page=10'); 
 }
 
 export async function getStaticPaths() {
-  return fetchCategoryNewsPaths();
+  return fetchPaths('categories', 1);
 }
