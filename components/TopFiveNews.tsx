@@ -3,11 +3,6 @@ import styled from 'styled-components';
 import { H2 } from 'components/Typographies';
 import SmallHorizontalCard from './SmallHorizontalCard';
 
-type TopFiveNewsWrapperProps = {
-  margin?: any;
-  xsMargin?: any;
-}
-
 const TopFiveNewsWrapper = styled.div<TopFiveNewsWrapperProps>`
     width: 100%;
     position: relative;
@@ -26,20 +21,25 @@ const TopFiveNewsContainer = styled.div`
     margin: 0 auto;
 `;
 
+type TopFiveNewsWrapperProps = {
+  margin?: any;
+  xsMargin?: any;
+}
+
 export default function TopFiveNews(props) {
   return (
     <TopFiveNewsWrapper margin={props.margin} xsMargin={props.xsMargin}>
         <TopFiveNewsContainer>
           <H2
-              fontColor={({ theme }) => theme.colors.text_4}
-              fontWeight={600}
-              fontSize={20}
-              lineHeight={21}
-              xsFontSize={21}
-              xsLineHeight={24}
-              margin={0}
-              >
-              Latest News
+            fontColor={({ theme }) => theme.colors.text_4}
+            fontWeight={600}
+            fontSize={20}
+            lineHeight={21}
+            xsFontSize={21}
+            xsLineHeight={24}
+            margin={0}
+            >
+            Latest News
           </H2>
           <SmallHorizontalCard margin={0} />
           <SmallHorizontalCard margin={0} />

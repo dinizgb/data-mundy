@@ -6,7 +6,7 @@ import Box from '@mui/material/Box';
 import Header from 'components/Header';
 import Footer from 'components/Footer';
 import { H2, P } from 'components/Typographies';
-import BigHorizontalCard from 'components/BigHorizontalCard';
+import BigHorizontalCardList from 'components/BigHorizontalCardList';
 import TopFiveNews from 'components/TopFiveNews';
 import DonateWidget from 'components/DonateWidget';
 
@@ -31,7 +31,7 @@ export default function LayoutListWithAside(props: LayoutListWithAsideProps) {
             <meta name="twitter:text:title" content={props.layoutTitle} />
             <link rel="canonical" href={`https://datamundy.com/${props.layoutSection}/${props.layoutSlug}`} />
             </Head>
-            <Header />
+            <Header data-testid="header-component" />
             <main>
                 <Container maxWidth="xl">
                     <Box sx={{ width: '100%' }}>
@@ -68,21 +68,10 @@ export default function LayoutListWithAside(props: LayoutListWithAsideProps) {
                         <Grid item xs={12} sm={12} md={8}>
                         <Grid container>
                             <Grid item xs={12} style={{ marginTop: 41 }}>
-                                {postList.map(({featured_media_url, categories_data, title, excerpt, slug}) => {
-                                    return (
-                                        <BigHorizontalCard
-                                        key={slug}
-                                        cardImage={featured_media_url}
-                                        cardSection={props.layoutSection}
-                                        cardCategory={categories_data[0].category_name}
-                                        cardCategorySlug={categories_data[0].category_slug}
-                                        cardTitle={title.rendered}
-                                        cardSlug={slug}
-                                        cardExcerpt={excerpt.rendered} 
-                                        margin={`0 0 30px 0`}
-                                        />
-                                    )
-                                })}
+                            <BigHorizontalCardList 
+                            postList={postList}
+                            layoutSection={props.layoutSection}
+                            />
                             </Grid>
                         </Grid>
                         </Grid>

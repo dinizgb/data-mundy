@@ -5,10 +5,6 @@ import Box from '@mui/material/Box';
 import { H3, H4 } from 'components/Typographies';
 import Image from 'next/image';
 
-type SmallHorizontalCardProps = {
-    margin?: any;
-}
-
 const SmallHorizontalCardWrapper = styled.div<SmallHorizontalCardProps>`
     width: 100%;
     position: relative;
@@ -26,6 +22,10 @@ const SmallHorizontalCardThumb = styled.div`
         border-radius: 8px;
     }
 `;
+
+type SmallHorizontalCardProps = {
+    margin?: any;
+}
 
 export default function SmallHorizontalCard(props) {
     return (

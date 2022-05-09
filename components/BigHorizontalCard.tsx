@@ -6,22 +6,6 @@ import { H3, H4, Span } from 'components/Typographies';
 import Avatar from '@mui/material/Avatar';
 import Image from 'next/image';
 
-type BigHorizontalCardProps = {
-    key: string;
-    cardImage: string;
-    cardSection: string;
-    cardCategory: string;
-    cardCategorySlug: string;
-    cardTitle: string;
-    cardSlug: string;
-    cardExcerpt: string;
-    margin?: any;
-}
-
-type BigHorizontalCardWrapperProps = {
-    margin?: any;
-}
-
 const BigHorizontalCardWrapper = styled.div<BigHorizontalCardWrapperProps>`
     width: 100%;
     position: relative;
@@ -81,6 +65,22 @@ const BigHorizontalCardThumb = styled.div`
         margin-right: auto;
     }
 `;
+
+type BigHorizontalCardProps = {
+    key: string;
+    cardImage: string;
+    cardSection: string;
+    cardCategory: string;
+    cardCategorySlug: string;
+    cardTitle: string;
+    cardSlug: string;
+    cardExcerpt: string;
+    margin?: any;
+}
+
+type BigHorizontalCardWrapperProps = {
+    margin?: any;
+}
 
 export default function BigHorizontalCard(props: BigHorizontalCardProps) {
     return (

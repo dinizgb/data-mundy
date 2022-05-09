@@ -3,10 +3,6 @@ import styled from 'styled-components';
 import { H2, H3 } from 'components/Typographies';
 import { PrimaryButton } from 'components/Buttons';
 
-type DonateWidgetWrapperProps = {
-  margin?: any;
-}
-
 const DonateWidgetWrapper = styled.div<DonateWidgetWrapperProps>`
     width: 100%;
     position: -webkit-sticky;
@@ -19,6 +15,9 @@ const DonateWidgetWrapper = styled.div<DonateWidgetWrapperProps>`
     padding: 20px 0;
 `;
 
+type DonateWidgetWrapperProps = {
+  margin?: any;
+}
 
 export default function DonateWidget(props) {
   return (

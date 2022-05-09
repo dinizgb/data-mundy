@@ -1,7 +1,7 @@
 import { ThemeProvider } from 'styled-components';
 import GlobalStyle from './global-style';
 
-const theme = {
+export const theme = {
   colors: {
     background: '#151515',
     primary: '#b27d3c',
@@ -13,6 +13,14 @@ const theme = {
     text_2: '#aaa',
     text_3: '#ccc',
     text_4: '#fff',
+  },
+  gradients: {
+    purple: {
+      default: "rgba(149, 76, 233, 1)",
+      half: "rgba(149, 76, 233, 0.5)",
+      quarter: "rgba(149, 76, 233, 0.25)",
+      zero: "rgba(149, 76, 233, 0)"
+    }
   },
   breakpoints: {
     md: 900,

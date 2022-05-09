@@ -35,30 +35,34 @@ const ListContainer = styled.div`
 const MenuBlock = styled.div`
     border-top: 1px solid ${({ theme }) => theme.colors.secondary};
     margin-right: 5px;
-    padding: 12px 28px 22px;
+    padding: 12px 28px 22px 0;
 `;
 
 const MenuTitle = styled.span`
-    font-size: 12px;
-    opacity: 0.8;
-    text-transform: uppercase;
+    font-family: 'Playfair Display', serif;
+    font-size: 24px;
+    font-weight: bold;
+    letter-spacing: 2px;
     padding: 8px 0;
-    color: ${({ theme }) => theme.colors.text_3}
+    margin-left: 40px;
+    color: ${({ theme }) => theme.colors.text_4};
+    border-bottom: 4px solid ${({ theme }) => theme.colors.text_4};
 `;
 
 const MenuList = styled.ul`
     display: flex;
     flex-direction: column;
     align-items: start;
+    margin-top: 20px;
     margin-left: 2px;
 `;
 
 const MenuItem = styled.li`
-    margin: 10px 0;
+    margin: 5px 0;
     a{
         color: ${({ theme }) => theme.colors.text_4};
-        font-size: 14px;
-        font-weight: 500;
+        font-size: 17px;
+        font-weight: 400;
         text-decoration: none;
         &:hover{
           color: ${({ theme }) => theme.colors.primary_hover};
@@ -72,13 +76,24 @@ export default function MobileMenu(props: MobileMenuProps) {
             <MenuContainer display={props.display}>
                 <ListContainer>
                     <MenuBlock>
-                        <MenuTitle>News Categories</MenuTitle>
+                        <MenuTitle>News</MenuTitle>
                         <MenuList>
-                            <MenuItem><a href="/news/lifestyle">Lifestyle</a></MenuItem>
-                            <MenuItem><a href="/news/music-business">Music Business</a></MenuItem>
-                            <MenuItem><a href="/news/music-history">Music History</a></MenuItem>
-                            <MenuItem><a href="/news/people">People</a></MenuItem>
-                            <MenuItem><a href="/news/releases">Releases</a></MenuItem>
+                            <MenuItem><a href="/news/history/">History</a></MenuItem>
+                            <MenuItem><a href="/news/nature/">Nature</a></MenuItem>
+                            <MenuItem><a href="/news/space/">Space</a></MenuItem>
+                            <MenuItem><a href="/news/tech/">Tech</a></MenuItem>
+                        </MenuList>
+                    </MenuBlock>
+                    <MenuBlock>
+                        <MenuTitle>Charts</MenuTitle>
+                        <MenuList>
+                            <MenuItem><a href="/charts/sports/">Sports</a></MenuItem>
+                            <MenuItem><a href="/charts/people/">People</a></MenuItem>
+                            <MenuItem><a href="/charts/politics/">Politics</a></MenuItem>
+                            <MenuItem><a href="/charts/military/">Military</a></MenuItem>
+                            <MenuItem><a href="/charts/technology/">Technology</a></MenuItem>
+                            <MenuItem><a href="/charts/business/">Business</a></MenuItem>
+                            <MenuItem><a href="/charts/economics/">Economics</a></MenuItem>
                         </MenuList>
                     </MenuBlock>
                     <MenuBlock>
