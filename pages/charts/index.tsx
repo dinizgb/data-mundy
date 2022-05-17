@@ -1,4 +1,4 @@
-import LayoutListWithAside from 'components/LayoutListWithAside';
+import LayoutListWithAside from 'components/Layouts/LayoutListWithAside';
 import { fetchSingle } from 'services/core/fetchSingle';
 
 export default function ChartsHome({ response }) {

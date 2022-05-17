@@ -1,4 +1,4 @@
-import LayoutHomePage from 'components/LayoutHomePage';
+import LayoutHomePage from 'components/Layouts/LayoutHomePage';
 import { fetchSingle } from 'services/core/fetchSingle';
 
 export default function Home(props) { //TODO: Transform this into a Home Component

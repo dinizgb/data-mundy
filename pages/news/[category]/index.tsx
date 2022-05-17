@@ -1,4 +1,4 @@
-import LayoutListWithAside from 'components/LayoutListWithAside';
+import LayoutListWithAside from 'components/Layouts/LayoutListWithAside';
 import { fetchSingleByCategory } from 'services/core/fetchSingleByCategory';
 import { fetchPaths } from 'services/core/fetchPaths';
 

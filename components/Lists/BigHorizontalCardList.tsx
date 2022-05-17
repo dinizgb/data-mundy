@@ -1,4 +1,4 @@
-import BigHorizontalCard from 'components/BigHorizontalCard';
+import BigHorizontalCard from 'components/Cards/BigHorizontalCard';
 
 export default function BigHorizontalCardList(props) { //TODO: Transform this into a Home Component
     return (

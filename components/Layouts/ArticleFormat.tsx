@@ -7,10 +7,10 @@ import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
 import Avatar from '@mui/material/Avatar';
 import Breadcrumbs from '@mui/material/Breadcrumbs';
-import Header from 'components/Header';
-import Footer from 'components/Footer';
-import { H2, P, A, Span } from 'components/Typographies';
-import { ContentBody } from 'components/ContentBody';
+import Header from 'components/Tags/Header';
+import Footer from 'components/Tags/Footer';
+import { H2, P, A, Span } from 'components/Texts/Typographies';
+import { ContentBody } from 'components/Texts/ContentBody';
 import formatDate from 'utils/formatDate';
 
 const ArticleFormatThumb = styled.div`
@@ -70,7 +70,7 @@ export default function ArticleFormat(props: ArticleFormatProps) { //TODO: Trans
       <meta name="twitter:text:title" content={props.articleTitle} />
       <link rel="canonical" href="https://datamundy.com/" />
     </Head>
-    <Header data-testid="header-component" />
+    <Header/>
     <ArticleFormatMain>
       <Container maxWidth="xl">
         <Box sx={{ width: '100%' }}>

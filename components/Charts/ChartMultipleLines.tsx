@@ -2,8 +2,8 @@
 
 import React, { useEffect, useRef } from "react";
 import Chart from "chart.js/auto";
-import { DefaultChartWrapper } from 'components/ChartWrappers';
-import { H3, P } from 'components/Typographies';
+import { DefaultChartWrapper } from 'components/Wrappers/ChartWrappers';
+import { H3, P } from 'components/Texts/Typographies';
 import stringToArray from 'utils/stringToArray';
 
 type ChartMultipleLinesProps = {

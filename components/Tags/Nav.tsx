@@ -2,7 +2,7 @@ import * as React from 'react';
 import { useState } from "react";
 import styled from 'styled-components';
 import MenuIcon from '@material-ui/icons/Menu';
-import MobileMenu from './MobileMenu';
+import MobileMenu from '../Menus/MobileMenu';
 
 type NavProps = {
   display: string;

@@ -138,3 +138,21 @@ export const A = styled.a<TypographyProps>`
     line-height: ${(props) => props.xsLineHeight}px;
   }
 `;
+
+export const FaviconText = styled.em<TypographyProps>`
+  font-family: 'Playfair Display', serif;
+  color: ${(props) => props.fontColor};
+  font-weight: ${props => props.fontWeight};
+  font-size: ${(props) => props.fontSize}px;
+  font-style: normal;
+  line-height: ${(props) => props.lineHeight}px;
+  margin: ${(props) => props.margin};
+  @media (max-width: 900px){
+    font-size: ${(props) => props.smFontSize}px;
+    line-height: ${(props) => props.smLineHeight}px;
+  }
+  @media (max-width: 600px){
+    font-size: ${(props) => props.xsFontSize}px;
+    line-height: ${(props) => props.xsLineHeight}px;
+  }
+`;

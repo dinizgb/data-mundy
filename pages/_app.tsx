@@ -13,6 +13,7 @@ export const theme = {
     text_2: '#aaa',
     text_3: '#ccc',
     text_4: '#fff',
+    oddSection: '#050505'
   },
   gradients: {
     purple: {

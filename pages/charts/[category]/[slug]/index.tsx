@@ -1,5 +1,5 @@
 import * as React from 'react';
-import ChartFormat from 'components/ChartFormat';
+import ChartFormat from 'components/Layouts/ChartFormat';
 import { fetchSingle } from 'services/core/fetchSingle';
 import { fetchPaths } from 'services/core/fetchPaths';
 import htmlTagCleaner from 'utils/htmlTagCleaner';
