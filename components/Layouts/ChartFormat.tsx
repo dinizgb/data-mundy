@@ -6,14 +6,11 @@ import Container from '@mui/material/Container';
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
 import Breadcrumbs from '@mui/material/Breadcrumbs';
-import Header from 'components/Header';
-import Footer from 'components/Footer';
-import { H2, P, A, Span } from 'components/Typographies';
-import { ContentBody } from 'components/ContentBody';
-import ChartLinearGradient from 'components/ChartLinearGradient';
-import ChartDoughnutPie from 'components/ChartDoughnutPie';
-import ChartMultipleLines from 'components/ChartMultipleLines';
-import ChartBars from 'components/ChartBars';
+import Header from 'components/Tags/Header';
+import Footer from 'components/Tags/Footer';
+import { H2, P, A, Span } from 'components/Texts/Typographies';
+import { ContentBody } from 'components/Texts/ContentBody';
+import chartPicker from 'services/charts/chartPicker';
 import formatDate from 'utils/formatDate';
 
 const ChartFormatThumb = styled.div`
@@ -61,81 +58,6 @@ type ChartFormatProps = {
 }
 
 export default function ChartFormat(props: ChartFormatProps) { //TODO: Transform metas into a SEO Component
-
-  const chartComponent = ( //TODO: Find a way to Reduce this code
-  props.chartACFData.chart_type == 'vertical_bars' ?
-    <ChartBars 
-    chartTitle={props.chartTitle}
-    chartSubtitle={props.chartExcerpt}
-    chartOrientation={'x'}
-    xValues={props.chartACFData.bars_chart.xvalues}
-    yValues={props.chartACFData.bars_chart.yvalues}
-    barColors={props.chartACFData.bars_chart.bar_colors}
-    margin={props.chartACFData.bars_chart.margin}
-    canvasHeight={props.chartACFData.bars_chart.canvas_height}
-    />
-  :
-  props.chartACFData.chart_type == 'horizontal_bars' ?
-    <ChartBars 
-    chartTitle={props.chartTitle}
-    chartSubtitle={props.chartExcerpt}
-    chartOrientation={'y'}
-    xValues={props.chartACFData.bars_chart.xvalues}
-    yValues={props.chartACFData.bars_chart.yvalues}
-    barColors={props.chartACFData.bars_chart.bar_colors}
-    margin={props.chartACFData.bars_chart.margin}
-    canvasHeight={props.chartACFData.bars_chart.canvas_height}
-    />
-  :
-  props.chartACFData.chart_type == 'doughnut' ?
-    <ChartDoughnutPie 
-    chartTitle={props.chartTitle}
-    chartSubtitle={props.chartExcerpt}
-    chartType={props.chartACFData.chart_type}
-    xValues={props.chartACFData.doughnut_pie_chart.xvalues}
-    yValues={props.chartACFData.doughnut_pie_chart.yvalues}
-    colors={props.chartACFData.doughnut_pie_chart.colors}
-    margin={props.chartACFData.doughnut_pie_chart.margin}
-    canvasHeight={props.chartACFData.doughnut_pie_chart.canvas_height}
-    /> 
-  :
-  props.chartACFData.chart_type == 'pie' ?
-    <ChartDoughnutPie 
-    chartTitle={props.chartTitle}
-    chartSubtitle={props.chartExcerpt}
-    chartType={props.chartACFData.chart_type}
-    xValues={props.chartACFData.doughnut_pie_chart.xvalues}
-    yValues={props.chartACFData.doughnut_pie_chart.yvalues}
-    colors={props.chartACFData.doughnut_pie_chart.colors}
-    margin={props.chartACFData.doughnut_pie_chart.margin}
-    canvasHeight={props.chartACFData.doughnut_pie_chart.canvas_height}
-    /> 
-  :
-  props.chartACFData.chart_type == 'multiple_lines' ?
-    <ChartMultipleLines 
-    chartTitle={props.chartTitle}
-    chartSubtitle={props.chartExcerpt}
-    xValues={props.chartACFData.multiple_lines_chart.xvalues}
-    yValues={props.chartACFData.multiple_lines_chart.yvalues}
-    margin={props.chartACFData.multiple_lines_chart.margin}
-    canvasHeight={props.chartACFData.multiple_lines_chart.canvas_height}
-    />  
-  :
-  props.chartACFData.chart_type == 'singleline' ?
-    <ChartLinearGradient 
-    chartTitle={props.chartTitle}
-    chartSubtitle={props.chartExcerpt}
-    lineColor={props.chartACFData.single_line_chart.line_color}
-    dataSet={props.chartACFData.single_line_chart.dataset}
-    xValues={props.chartACFData.single_line_chart.xvalues}
-    yValues={props.chartACFData.single_line_chart.yvalues}
-    canvasHeight={props.chartACFData.single_line_chart.canvas_height}
-    margin={props.chartACFData.single_line_chart.margin}
-    /> 
-  :
-  'A problem occured, we are sorry for the inconvenience. We are working on it.' 
-  );
-
   return (
     <>
     <Head>
@@ -146,7 +68,7 @@ export default function ChartFormat(props: ChartFormatProps) { //TODO: Transform
       <meta name="twitter:text:title" content={props.chartTitle} />
       <link rel="canonical" href="https://datamundy.com/" />
     </Head>
-    <Header data-testid="header-component" />
+    <Header/>
     <ChartFormatMain>
       <Container maxWidth="xl">
         <Box sx={{ width: '100%' }}>
@@ -250,7 +172,7 @@ export default function ChartFormat(props: ChartFormatProps) { //TODO: Transform
                       __html: props.chartContent
                     }}
                   />
-                  {chartComponent}
+                  {chartPicker(props.chartACFData)}
                 </Grid>
               </Grid>
             </Grid>

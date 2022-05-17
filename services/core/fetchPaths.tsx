@@ -4,6 +4,14 @@ export async function fetchPaths(endpoint: string, level: number) {
     const response = await req.json();
 
     const paths = //TODO: Find a more reduced way to do this
+        endpoint === 'specials' ?
+            response.map(item => ({
+                params: 
+                    {
+                        slug: item.slug
+                    }
+            }))
+        :
         endpoint === 'charts' ?
             response.map(item => ({
                 params: 

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import ArticleFormat from 'components/ArticleFormat';
+import ArticleFormat from 'components/Layouts/ArticleFormat';
 import { fetchSingle } from 'services/core/fetchSingle';
 import { fetchPaths } from 'services/core/fetchPaths';
 

@@ -1,7 +1,7 @@
 import * as React from 'react';
 import styled from 'styled-components';
-import { H2, H3 } from 'components/Typographies';
-import { PrimaryButton } from 'components/Buttons';
+import { H2, H3 } from 'components/Texts/Typographies';
+import { PrimaryButton } from 'components/Inputs/Buttons';
 
 const DonateWidgetWrapper = styled.div<DonateWidgetWrapperProps>`
     width: 100%;

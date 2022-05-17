@@ -2,7 +2,7 @@ import * as React from 'react';
 import styled from 'styled-components';
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
-import { H3, H4 } from 'components/Typographies';
+import { H3, H4 } from 'components/Texts/Typographies';
 import Image from 'next/image';
 
 const SmallHorizontalCardWrapper = styled.div<SmallHorizontalCardProps>`

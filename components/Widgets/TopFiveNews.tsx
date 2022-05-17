@@ -1,7 +1,7 @@
 import * as React from 'react';
 import styled from 'styled-components';
-import { H2 } from 'components/Typographies';
-import SmallHorizontalCard from './SmallHorizontalCard';
+import { H2 } from 'components/Texts/Typographies';
+import SmallHorizontalCard from '../Cards/SmallHorizontalCard';
 
 const TopFiveNewsWrapper = styled.div<TopFiveNewsWrapperProps>`
     width: 100%;

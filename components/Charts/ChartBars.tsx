@@ -1,52 +1,50 @@
-// DOCUMENTATION: https://www.chartjs.org/docs/latest/samples/other-charts/doughnut.html
+// DOCUMENTATION: https://www.chartjs.org/docs/latest/samples/bar/vertical.html
 
 import React, { useEffect, useRef } from "react";
 import Chart from "chart.js/auto";
-import { DefaultChartWrapper } from 'components/ChartWrappers';
-import { H3, Span } from 'components/Typographies';
-import { theme } from 'pages/_app';
+import { DefaultChartWrapper } from 'components/Wrappers/ChartWrappers';
+import { H3, P } from 'components/Texts/Typographies';
 import stringToArray from 'utils/stringToArray';
 
-type ChartDoughnutPieProps = {
+type ChartBarsProps = {
   chartTitle: string;
   chartSubtitle: string;
-  chartType: string;
+  chartOrientation: string;
   xValues: string;
   yValues: string;
-  colors: string;
+  barColors: string;
   margin: string;
   canvasHeight: string;
 }
 
-export default function ChartDoughnutPie(props: ChartDoughnutPieProps) {
+export default function ChartBars(props: ChartBarsProps) {
   const canvasEl = useRef(null);
 
   const xValuesArray = stringToArray(props.xValues, ',');
   const yValuesArray = stringToArray(props.yValues, ',', 'number');
-  const colorsArray = stringToArray(props.colors, ',');
-  
+  const barColorsArray = stringToArray(props.barColors, ',');
+
   useEffect(() => {
     const ctx = canvasEl.current.getContext("2d");
 
-    const xLabels = xValuesArray;
-    const yValues = yValuesArray;
-
     const data = {
-      labels: xLabels,
-      datasets: [
-        {
-          label: props.chartTitle,
-          data: yValues,
-          backgroundColor: colorsArray,
-          borderWidth: 0,
-          borderColor: theme.colors.secondary,
-          hoverOffset: 6,
-        }
-      ]
+      labels: xValuesArray,
+      datasets: [{
+        backgroundColor: barColorsArray,
+        data: yValuesArray
+      }]
     };
     const config:any = {
-      type: props.chartType,
+      type: 'bar',
       data: data,
+      options: {
+        plugins: {
+          legend: {
+              display: false
+          }
+        },
+        indexAxis: props.chartOrientation,
+      }
     };
     const myDoughnutChart = new Chart(ctx, config);
 
@@ -66,15 +64,15 @@ export default function ChartDoughnutPie(props: ChartDoughnutPieProps) {
       xsLineHeight={30}
       margin={0}
       >{props.chartTitle}</H3>
-      <Span
+      <P
       fontColor={({ theme }) => theme.colors.text_2}
       fontWeight={400}
       fontSize={16}
-      lineHeight={24}
+      lineHeight={28}
       xsFontSize={16}
-      xsLineHeight={24}
-      margin={`10px 0`}
-      >{props.chartSubtitle}</Span>
+      xsLineHeight={28}
+      margin={`5px 0 15px 0`}
+      >{props.chartSubtitle}</P>
       <canvas ref={canvasEl} height={props.canvasHeight} /> 
     </DefaultChartWrapper>
   );

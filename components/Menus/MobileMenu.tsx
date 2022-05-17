@@ -39,33 +39,29 @@ const MenuBlock = styled.div`
 `;
 
 const MenuTitle = styled.span`
-    font-family: 'Playfair Display', serif;
-    font-size: 24px;
+    font-size: 20px;
     font-weight: bold;
     letter-spacing: 2px;
     padding: 8px 0;
     margin-left: 40px;
     color: ${({ theme }) => theme.colors.text_4};
-    border-bottom: 4px solid ${({ theme }) => theme.colors.text_4};
 `;
 
 const MenuList = styled.ul`
     display: flex;
     flex-direction: column;
     align-items: start;
-    margin-top: 20px;
-    margin-left: 2px;
 `;
 
 const MenuItem = styled.li`
     margin: 5px 0;
     a{
-        color: ${({ theme }) => theme.colors.text_4};
+        color: ${({ theme }) => theme.colors.text_2};
         font-size: 17px;
         font-weight: 400;
         text-decoration: none;
         &:hover{
-          color: ${({ theme }) => theme.colors.primary_hover};
+          color: ${({ theme }) => theme.colors.text_4};
         }
     }
 `;

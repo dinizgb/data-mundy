@@ -5,11 +5,13 @@ import Container from '@mui/material/Container';
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
 import Nav from './Nav';
-import { H1 } from './Typographies';
+import { H1 } from '../Texts/Typographies';
 
 const HeaderContainer = styled.header`
   padding: 16px 0 11px 0;
-  border-bottom: 1px solid #444;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  z-index: 2;
+  position: relative;
 `;
 
 export default function Header() {

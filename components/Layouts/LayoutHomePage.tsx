@@ -3,13 +3,13 @@ import Head from "next/head";
 import Container from '@mui/material/Container';
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
-import Header from 'components/Header';
-import Footer from 'components/Footer';
-import { H2, P, A } from 'components/Typographies';
-import { WhiteButton } from 'components/Buttons';
-import TopFiveNews from 'components/TopFiveNews';
-import DonateWidget from 'components/DonateWidget';
-import BigHorizontalCardList from 'components/BigHorizontalCardList';
+import Header from 'components/Tags/Header';
+import Footer from 'components/Tags/Footer';
+import { H2, P, A } from 'components/Texts/Typographies';
+import { WhiteButton } from 'components/Inputs/Buttons';
+import TopFiveNews from 'components/Widgets/TopFiveNews';
+import DonateWidget from 'components/Widgets/DonateWidget';
+import BigHorizontalCardList from 'components/Lists/BigHorizontalCardList';
 
 type LayoutHomePageProps = {
     postData: any;
@@ -28,7 +28,7 @@ export default function LayoutHomePage(props: LayoutHomePageProps) {
                 <meta name="twitter:text:title" content={`Data Mundy | ${props.layoutDescription}`} />
                 <link rel="canonical" href="https://datamundy.com/" />
             </Head>
-            <Header data-testid="header-component" />
+            <Header/>
             <main>
             <Container maxWidth="xl">
                 <Box sx={{ width: '100%' }}>

@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import Container from '@mui/material/Container';
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
-import { P, A } from 'components/Typographies';
+import { P, A } from 'components/Texts/Typographies';
 
 const FooterWrapper = styled.footer`
     width: 100%;
