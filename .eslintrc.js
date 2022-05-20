@@ -13,7 +13,9 @@ module.exports = {
     sourceType: "module",
   },
   plugins: ["react", "@typescript-eslint"],
-  rules: {},
+  rules: {
+    "spaced-comment": ["error", "always", { markers: ["/"] }],
+  },
   settings: {
     react: {
       version: "17.0.2",
