@@ -1,3 +1,8 @@
+/**
+ * Function that indicates if a number is Odd or Even.
+ * @param {number} number .
+ * @return {number}: 0 for even, 1 for odd.
+ */
 export default function isOddOrEven(number: number) {
-    return number % 2; // 0 is even, 1 is odd
+  return number % 2;
 }

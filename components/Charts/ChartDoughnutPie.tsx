@@ -2,10 +2,10 @@
 
 import React, { useEffect, useRef } from "react";
 import Chart from "chart.js/auto";
-import { DefaultChartWrapper } from 'components/Wrappers/ChartWrappers';
-import { H3, Span } from 'components/Texts/Typographies';
-import { theme } from 'pages/_app';
-import stringToArray from 'utils/stringToArray';
+import { DefaultChartWrapper } from "components/Wrappers/ChartWrappers";
+import { H3, Span } from "components/Texts/Typographies";
+import { theme } from "pages/_app";
+import stringToArray from "utils/stringToArray";
 
 type ChartDoughnutPieProps = {
   chartTitle: string;
@@ -16,15 +16,20 @@ type ChartDoughnutPieProps = {
   colors: string;
   margin: string;
   canvasHeight: string;
-}
+};
 
+/**
+ * Component that renders a DoughnutPie Chart.
+ * @param {any} props to the component.
+ * @return {TSX.Element}: The TSX code with a DoughnutPie Chart.
+ */
 export default function ChartDoughnutPie(props: ChartDoughnutPieProps) {
   const canvasEl = useRef(null);
 
-  const xValuesArray = stringToArray(props.xValues, ',');
-  const yValuesArray = stringToArray(props.yValues, ',', 'number');
-  const colorsArray = stringToArray(props.colors, ',');
-  
+  const xValuesArray = stringToArray(props.xValues, ",");
+  const yValuesArray = stringToArray(props.yValues, ",", "number");
+  const colorsArray = stringToArray(props.colors, ",");
+
   useEffect(() => {
     const ctx = canvasEl.current.getContext("2d");
 
@@ -41,10 +46,10 @@ export default function ChartDoughnutPie(props: ChartDoughnutPieProps) {
           borderWidth: 0,
           borderColor: theme.colors.secondary,
           hoverOffset: 6,
-        }
-      ]
+        },
+      ],
     };
-    const config:any = {
+    const config: any = {
       type: props.chartType,
       data: data,
     };
@@ -58,24 +63,28 @@ export default function ChartDoughnutPie(props: ChartDoughnutPieProps) {
   return (
     <DefaultChartWrapper margin={props.margin}>
       <H3
-      fontColor={({ theme }) => theme.colors.text_4}
-      fontWeight={600}
-      fontSize={21}
-      lineHeight={30}
-      xsFontSize={21}
-      xsLineHeight={30}
-      margin={0}
-      >{props.chartTitle}</H3>
+        fontColor={({ theme }) => theme.colors.text_4}
+        fontWeight={600}
+        fontSize={21}
+        lineHeight={30}
+        xsFontSize={21}
+        xsLineHeight={30}
+        margin={0}
+      >
+        {props.chartTitle}
+      </H3>
       <Span
-      fontColor={({ theme }) => theme.colors.text_2}
-      fontWeight={400}
-      fontSize={16}
-      lineHeight={24}
-      xsFontSize={16}
-      xsLineHeight={24}
-      margin={`10px 0`}
-      >{props.chartSubtitle}</Span>
-      <canvas ref={canvasEl} height={props.canvasHeight} /> 
+        fontColor={({ theme }) => theme.colors.text_2}
+        fontWeight={400}
+        fontSize={16}
+        lineHeight={24}
+        xsFontSize={16}
+        xsLineHeight={24}
+        margin={`10px 0`}
+      >
+        {props.chartSubtitle}
+      </Span>
+      <canvas ref={canvasEl} height={props.canvasHeight} />
     </DefaultChartWrapper>
   );
 }

@@ -1,36 +1,40 @@
-import ChartLinearGradient from 'components/Charts/ChartLinearGradient';
-import ChartDoughnutPie from 'components/Charts/ChartDoughnutPie';
-import ChartMultipleLines from 'components/Charts/ChartMultipleLines';
-import ChartBars from 'components/Charts/ChartBars';
+import React from "react";
+import ChartLinearGradient from "components/Charts/ChartLinearGradient";
+import ChartDoughnutPie from "components/Charts/ChartDoughnutPie";
+import ChartMultipleLines from "components/Charts/ChartMultipleLines";
+import ChartBars from "components/Charts/ChartBars";
 
+/**
+ * Function that returns a Chart with the respective data.
+ * @param {any} props with the data to the chart.
+ * @return {TSX.Element}: The TSX code with a Chart.
+ */
 export default function chartPicker(props: any) {
-    const chartComponent = (
-    props.chart_type == 'vertical_bars' ?
-        <ChartBars 
+  const chartComponent =
+    props.chart_type == "vertical_bars" ? (
+      <ChartBars
         chartTitle={props.chartTitle}
         chartSubtitle={props.chartExcerpt}
-        chartOrientation={'x'}
+        chartOrientation={"x"}
         xValues={props.bars_chart.xvalues}
         yValues={props.bars_chart.yvalues}
         barColors={props.bars_chart.bar_colors}
         margin={props.bars_chart.margin}
         canvasHeight={props.bars_chart.canvas_height}
-        />
-    :
-    props.chart_type == 'horizontal_bars' ?
-        <ChartBars 
+      />
+    ) : props.chart_type == "horizontal_bars" ? (
+      <ChartBars
         chartTitle={props.chartTitle}
         chartSubtitle={props.chartExcerpt}
-        chartOrientation={'y'}
+        chartOrientation={"y"}
         xValues={props.bars_chart.xvalues}
         yValues={props.bars_chart.yvalues}
         barColors={props.bars_chart.bar_colors}
         margin={props.bars_chart.margin}
         canvasHeight={props.bars_chart.canvas_height}
-        />
-    :
-    props.chart_type == 'doughnut' ?
-        <ChartDoughnutPie 
+      />
+    ) : props.chart_type == "doughnut" ? (
+      <ChartDoughnutPie
         chartTitle={props.chartTitle}
         chartSubtitle={props.chartExcerpt}
         chartType={props.chart_type}
@@ -39,10 +43,9 @@ export default function chartPicker(props: any) {
         colors={props.doughnut_pie_chart.colors}
         margin={props.doughnut_pie_chart.margin}
         canvasHeight={props.doughnut_pie_chart.canvas_height}
-        /> 
-    :
-    props.chart_type == 'pie' ?
-        <ChartDoughnutPie 
+      />
+    ) : props.chart_type == "pie" ? (
+      <ChartDoughnutPie
         chartTitle={props.chartTitle}
         chartSubtitle={props.chartExcerpt}
         chartType={props.chart_type}
@@ -51,20 +54,18 @@ export default function chartPicker(props: any) {
         colors={props.doughnut_pie_chart.colors}
         margin={props.doughnut_pie_chart.margin}
         canvasHeight={props.doughnut_pie_chart.canvas_height}
-        /> 
-    :
-    props.chart_type == 'multiple_lines' ?
-        <ChartMultipleLines 
+      />
+    ) : props.chart_type == "multiple_lines" ? (
+      <ChartMultipleLines
         chartTitle={props.chartTitle}
         chartSubtitle={props.chartExcerpt}
         xValues={props.multiple_lines_chart.xvalues}
         yValues={props.multiple_lines_chart.yvalues}
         margin={props.multiple_lines_chart.margin}
         canvasHeight={props.multiple_lines_chart.canvas_height}
-        />  
-    :
-    props.chart_type == 'singleline' ?
-        <ChartLinearGradient 
+      />
+    ) : props.chart_type == "singleline" ? (
+      <ChartLinearGradient
         chartTitle={props.chartTitle}
         chartSubtitle={props.chartExcerpt}
         lineColor={props.single_line_chart.line_color}
@@ -73,10 +74,10 @@ export default function chartPicker(props: any) {
         yValues={props.single_line_chart.yvalues}
         canvasHeight={props.single_line_chart.canvas_height}
         margin={props.single_line_chart.margin}
-        /> 
-    :
-        'A problem occured, we are sorry for the inconvenience. We are working on it.' 
+      />
+    ) : (
+      "A problem occured, we are sorry for the inconvenience. We are working on it."
     );
 
-    return chartComponent;
+  return chartComponent;
 }
