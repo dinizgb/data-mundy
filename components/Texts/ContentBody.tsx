@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 export const ContentBody = styled.div`
   p {
@@ -25,7 +25,7 @@ export const ContentBody = styled.div`
       max-width: 100%;
     }
   }
-  span{
+  span {
     line-height: 28px;
     font-size: 15px;
     color: ${({ theme }) => theme.colors.text_2};
@@ -80,8 +80,8 @@ export const ContentBody = styled.div`
       }
     }
   }
-  figure{
-    img{
+  figure {
+    img {
       width: 100%;
       height: 100%;
     }

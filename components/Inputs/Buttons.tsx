@@ -1,11 +1,11 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 type ButtonProps = {
   width: string;
   fontSize?: number;
   padding?: string;
   margin?: string;
-}
+};
 
 export const PrimaryButton = styled.a<ButtonProps>`
   width: ${(props) => props.width};

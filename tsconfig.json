@@ -4,10 +4,7 @@
     "module": "esnext",
     "jsx": "preserve",
     "baseUrl": ".",
-    "lib": [
-      "dom",
-      "es2017"
-    ],
+    "lib": ["dom", "es2017"],
     "moduleResolution": "node",
     "allowJs": true,
     "noEmit": true,
@@ -25,12 +22,11 @@
     "isolatedModules": true,
     "incremental": true
   },
-  "exclude": [
-    "node_modules"
-  ],
+  "exclude": ["node_modules"],
   "include": [
     "next-env.d.ts",
     "**/*.ts",
-    "**/*.tsx"
-, "__tests__/utils/custom-queries.js"  ]
+    "**/*.tsx",
+    "__tests__/utils/custom-queries.js"
+  ]
 }

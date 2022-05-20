@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 /** @type {import('next').NextConfig} */
 
 const nextConfig = {
@@ -5,15 +6,15 @@ const nextConfig = {
   compiler: {
     styledComponents: true,
   },
-}
+};
 
 module.exports = {
   images: {
-    domains: ['wp.crdps.xyz'],
+    domains: ["wp.crdps.xyz"],
   },
   i18n: {
-    locales: ['eng', 'US'],
-    defaultLocale: 'eng',
+    locales: ["eng", "US"],
+    defaultLocale: "eng",
   },
   trailingSlash: true,
 };
