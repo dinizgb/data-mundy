@@ -120,6 +120,14 @@ export default function MobileMenu(props: MobileMenuProps) {
             </MenuList>
           </MenuBlock>
           <MenuBlock>
+            <MenuTitle>Specials</MenuTitle>
+            <MenuList>
+              <MenuItem>
+                <a href="/specials/">Check out our Special Contents</a>
+              </MenuItem>
+            </MenuList>
+          </MenuBlock>
+          <MenuBlock>
             <MenuTitle>Follow us</MenuTitle>
             <MenuList>
               <MenuItem>
