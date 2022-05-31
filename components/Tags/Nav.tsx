@@ -1,8 +1,9 @@
 import React from "react";
-import { useState } from "react";
 import styled from "styled-components";
 import MenuIcon from "@material-ui/icons/Menu";
 import MobileMenu from "../Menus/MobileMenu";
+import { useAppSelector, useAppDispatch } from "redux/store";
+import { toggleMobileMenu } from "redux/slices/mobileMenu/";
 
 type NavProps = {
   display: string;
@@ -65,11 +66,13 @@ const MenuOverlay = styled.div<NavProps>`
  * @return {TSX.Element}: The TSX code for the Nav Component.
  */
 export default function Nav() {
-  const [showMobileMenu, setShowMobileMenu] = useState(false);
-  // eslint-disable-next-line require-jsdoc
-  function toggleMobileMenu() {
-    setShowMobileMenu(!showMobileMenu);
-  }
+  const dispatch = useAppDispatch();
+  const mobileMenuStatus = useAppSelector(
+    (state) => state.mobileMenuEvents.showMobileMenu
+  );
+  const handleToggleMobileMenu = () => {
+    dispatch(toggleMobileMenu(!mobileMenuStatus ? true : false));
+  };
 
   return (
     <NavContainer>
@@ -83,13 +86,13 @@ export default function Nav() {
         <NavLi>
           <a href="/specials/">Specials</a>
         </NavLi>
-        <NavLiMobile onClick={toggleMobileMenu}>
+        <NavLiMobile onClick={handleToggleMobileMenu}>
           <MenuIcon />
         </NavLiMobile>
-        <MobileMenu display={showMobileMenu ? "block" : "none"} />
+        <MobileMenu display={!mobileMenuStatus ? "none" : "block"} />
         <MenuOverlay
-          display={showMobileMenu ? "block" : "none"}
-          onClick={toggleMobileMenu}
+          display={!mobileMenuStatus ? "none" : "block"}
+          onClick={handleToggleMobileMenu}
         />
       </NavUl>
     </NavContainer>
