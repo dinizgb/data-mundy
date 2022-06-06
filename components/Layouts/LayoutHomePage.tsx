@@ -35,10 +35,34 @@ export default function LayoutHomePage(props: LayoutHomePageProps) {
         />
         <meta property="og:description" content={props.layoutDescription} />
         <meta
+          property="og:url"
+          content={`https://${process.env.NEXT_PUBLIC_ENV_DOMAIN}/`}
+        />
+        <meta
+          property="og:image"
+          content={`https://${process.env.NEXT_PUBLIC_ENV_DOMAIN}/images/dm-logo.jpg`}
+        />
+        <meta property="og:image:width" content="400" />
+        <meta property="og:image:height" content="200" />
+        <meta property="og:image:alt" content={props.layoutDescription} />
+        <meta
           name="twitter:text:title"
           content={`Data Mundy | ${props.layoutDescription}`}
         />
-        <link rel="canonical" href="https://datamundy.com/" />
+        <meta
+          name="twitter:image"
+          content={`https://${process.env.NEXT_PUBLIC_ENV_DOMAIN}/images/dm-logo.jpg`}
+        />
+        <meta name="twitter:image:alt" content={props.layoutDescription} />
+        <meta name="twitter:card" content="summary_large_image" />
+        <link
+          itemProp="thumbnailUrl"
+          href={`https://${process.env.NEXT_PUBLIC_ENV_DOMAIN}/images/dm-logo.jpg`}
+        />
+        <link
+          rel="canonical"
+          href={`https://${process.env.NEXT_PUBLIC_ENV_DOMAIN}/`}
+        />
       </Head>
       <Header />
       <main>

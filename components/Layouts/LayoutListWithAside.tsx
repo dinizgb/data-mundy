@@ -9,6 +9,7 @@ import { H2, P } from "components/Texts/Typographies";
 import BigHorizontalCardList from "components/Lists/BigHorizontalCardList";
 import TopFiveNews from "components/Widgets/TopFiveNews";
 import DonateWidget from "components/Widgets/DonateWidget";
+import CategoryPageSEOConstructor from "services/SEO/CategoryPageSEOConstructor";
 
 type LayoutListWithAsideProps = {
   postData: any;
@@ -30,20 +31,13 @@ export default function LayoutListWithAside(props: LayoutListWithAsideProps) {
     <>
       <Head>
         <title>
-          Data Mundy | {props.layoutTitle} | Providing Data from and to an
-          amazing World
+          {props.layoutTitle} | Data Mundy | {props.layoutDescription}
         </title>
-        <meta name="description" content={props.layoutDescription} />
-        <meta
-          property="og:title"
-          content={`Data Mundy | ${props.layoutTitle} | Providing Data from and to an amazing World`}
-          key="title"
-        />
-        <meta property="og:description" content={props.layoutDescription} />
-        <meta name="twitter:text:title" content={props.layoutTitle} />
-        <link
-          rel="canonical"
-          href={`https://datamundy.com/${props.layoutSection}/${props.layoutSlug}`}
+        <CategoryPageSEOConstructor
+          categoryPageTitle={props.layoutTitle}
+          categoryPageExcerpt={props.layoutDescription}
+          categoryPageSectionSlug={props.layoutSection}
+          categoryPageSlug={props.layoutSlug}
         />
       </Head>
       <Header />

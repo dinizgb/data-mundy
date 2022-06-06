@@ -17,7 +17,12 @@ export default function ChartArticlePage({ response }) {
       <ChartFormat
         chartTitle={chartData.title.rendered}
         chartExcerpt={htmlTagCleaner(chartData.excerpt.rendered)}
-        chartDate={chartData.modified}
+        chartSectionName={"Charts"}
+        chartSectionSlug={"charts"}
+        chartSlug={chartData.slug}
+        chartDate={chartData.date}
+        chartModifiedDate={chartData.modified}
+        chartAuthor={"Data Mundy Staff"} // TODO: Add author data on API response
         chartFeaturedImage={chartData.featured_media_url}
         chartContent={chartData.content.rendered}
         chartACFData={chartData.ACF}
