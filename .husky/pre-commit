@@ -32,7 +32,7 @@ yarn test ||
 )
 
 # If everything passes... Now we can commit
-echo '✔️✔️✔️ Style, Lint an Unit test has pass. Initiating NextJS build ⚙️...'
+echo '✔️✔️✔️ Style, Lint and Unit test has pass. Initiating NextJS build ⚙️...'
 
 yarn build ||
 (

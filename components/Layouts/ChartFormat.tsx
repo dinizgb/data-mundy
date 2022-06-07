@@ -12,6 +12,7 @@ import { H2, P, A, Span } from "components/Texts/Typographies";
 import { ContentBody } from "components/Texts/ContentBody";
 import chartPicker from "services/charts/chartPicker";
 import formatDate from "utils/formatDate";
+import SinglePageSEOConstructor from "services/SEO/SinglePageSEOConstructor";
 
 const ChartFormatThumb = styled.div`
   width: 100%;
@@ -21,10 +22,10 @@ const ChartFormatThumb = styled.div`
   img {
     border-radius: 8px;
   }
-  @media (max-width: ${({ theme }) => theme.breakpoints.sm}px) {
-    width: 90%;
+  @media (max-width: ${({ theme }) => theme.breakpoints.md}px) {
+    width: 100%;
+    height: 350px;
     margin-top: 0;
-    margin-bottom: 25px;
     margin-left: auto;
     margin-right: auto;
   }
@@ -51,7 +52,12 @@ const ChartFormatMain = styled.main`
 type ChartFormatProps = {
   chartTitle: string;
   chartExcerpt: string;
+  chartSectionName: string;
+  chartSectionSlug: string;
+  chartSlug: string;
   chartDate: string;
+  chartModifiedDate: string;
+  chartAuthor: string;
   chartFeaturedImage: string;
   chartContent: string;
   chartACFData: any;
@@ -67,15 +73,24 @@ export default function ChartFormat(props: ChartFormatProps) {
   return (
     <>
       <Head>
-        <title>
-          Data Mundy | {props.chartTitle} | Providing Data from and to an
-          amazing World
-        </title>
-        <meta name="description" content={props.chartExcerpt} />
-        <meta property="og:title" content={props.chartTitle} key="title" />
-        <meta property="og:description" content={props.chartExcerpt} />
-        <meta name="twitter:text:title" content={props.chartTitle} />
-        <link rel="canonical" href="https://datamundy.com/" />
+        <title>{props.chartTitle} | Data Mundy</title>
+        <SinglePageSEOConstructor
+          singlePageTitle={props.chartTitle}
+          singlePageExcerpt={props.chartExcerpt}
+          singlePageSectionName={props.chartSectionName}
+          singlePageSectionSlug={props.chartSectionSlug}
+          singlePageCategoryName={
+            props.chartACFData.chart_category_data.post_title
+          }
+          singlePageCategorySlug={
+            props.chartACFData.chart_category_data.post_name
+          }
+          singlePageSlug={props.chartSlug}
+          singlePageDate={props.chartDate}
+          singlePageModifiedDate={props.chartModifiedDate}
+          singlePageFeaturedImage={props.chartFeaturedImage}
+          singlePageAuthor={props.chartAuthor}
+        />
       </Head>
       <Header />
       <ChartFormatMain>
@@ -161,7 +176,7 @@ export default function ChartFormat(props: ChartFormatProps) {
                     xsLineHeight={24}
                     margin={`4px 0 0 5px`}
                   >
-                    Last updated at {formatDate(props.chartDate)}
+                    Last updated at {formatDate(props.chartModifiedDate)}
                   </Span>
                 </ChartFormatAuthor>
               </Grid>

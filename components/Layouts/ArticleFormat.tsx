@@ -12,6 +12,7 @@ import Footer from "components/Tags/Footer";
 import { H2, P, A, Span } from "components/Texts/Typographies";
 import { ContentBody } from "components/Texts/ContentBody";
 import formatDate from "utils/formatDate";
+import SinglePageSEOConstructor from "services/SEO/SinglePageSEOConstructor";
 
 const ArticleFormatThumb = styled.div`
   width: 100%;
@@ -22,10 +23,10 @@ const ArticleFormatThumb = styled.div`
   img {
     border-radius: 8px;
   }
-  @media (max-width: ${({ theme }) => theme.breakpoints.sm}px) {
-    width: 90%;
+  @media (max-width: ${({ theme }) => theme.breakpoints.md}px) {
+    width: 100%;
+    height: 350px;
     margin-top: 0;
-    margin-bottom: 25px;
     margin-left: auto;
     margin-right: auto;
   }
@@ -52,9 +53,14 @@ const ArticleFormatAuthor = styled.div`
 type ArticleFormatProps = {
   articleTitle: string;
   articleExcerpt: string;
+  articleSectionName: string;
+  articleSectionSlug: string;
   articleCategoryName: string;
   articleCategorySlug: string;
+  articleSlug: string;
   articleDate: string;
+  articleModifiedDate: string;
+  articleAuthor: string;
   articleFeaturedImage: string;
   articleContent: string;
 };
@@ -65,19 +71,23 @@ type ArticleFormatProps = {
  * @return {TSX.Element}: The TSX code for the Article Layout Component.
  */
 export default function ArticleFormat(props: ArticleFormatProps) {
-  // TODO: Transform metas into a SEO Component
   return (
     <>
       <Head>
-        <title>
-          Data Mundy | {props.articleTitle} | Providing Data from and to an
-          amazing World
-        </title>
-        <meta name="description" content={props.articleExcerpt} />
-        <meta property="og:title" content={props.articleTitle} key="title" />
-        <meta property="og:description" content={props.articleExcerpt} />
-        <meta name="twitter:text:title" content={props.articleTitle} />
-        <link rel="canonical" href="https://datamundy.com/" />
+        <title>{props.articleTitle + " | Data Mundy"}</title>
+        <SinglePageSEOConstructor
+          singlePageTitle={props.articleTitle}
+          singlePageExcerpt={props.articleExcerpt}
+          singlePageSectionName={props.articleSectionName}
+          singlePageSectionSlug={props.articleSectionSlug}
+          singlePageCategoryName={props.articleCategoryName}
+          singlePageCategorySlug={props.articleCategorySlug}
+          singlePageSlug={props.articleSlug}
+          singlePageDate={props.articleDate}
+          singlePageModifiedDate={props.articleModifiedDate}
+          singlePageFeaturedImage={props.articleFeaturedImage}
+          singlePageAuthor={props.articleAuthor}
+        />
       </Head>
       <Header />
       <ArticleFormatMain>
