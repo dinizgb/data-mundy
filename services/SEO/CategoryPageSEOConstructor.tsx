@@ -9,7 +9,7 @@ type CategoryPageSEOConstructorProps = {
 
 /**
  * Function that returns the required tags for Category Page SEO.
- * Obs: The <title> tag is out of this constructor because for some reason it only renders on the top level component.
+ * Obs: The <title> tag and 'canonical' link are out of this constructor because for some reason it only renders on the top level component.
  * @param {any} props in raw format.
  * @return {TSX.Element}: with the required tags for Category Page SEO.
  */
@@ -53,17 +53,6 @@ export default function CategoryPageSEOConstructor(
       />
       <meta name="twitter:image:alt" content={props.categoryPageExcerpt} />
       <meta name="twitter:card" content="summary_large_image" />
-      <link
-        rel="preload"
-        href={`https://${process.env.NEXT_PUBLIC_ENV_DOMAIN}/images/dm-logo.jpg`}
-        as="image"
-      />
-      <link
-        rel="canonical"
-        href={`https://${process.env.NEXT_PUBLIC_ENV_DOMAIN}/${
-          props.categoryPageSectionSlug
-        }/${props.categoryPageSlug ? props.categoryPageSlug + "/" : ""}`}
-      />
     </>
   );
 }
