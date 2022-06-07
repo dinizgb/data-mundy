@@ -33,17 +33,17 @@ export default function LayoutListWithAside(props: LayoutListWithAsideProps) {
         <title>
           {props.layoutTitle} | Data Mundy | {props.layoutDescription}
         </title>
-        <link
-          rel="canonical"
-          href={`https://${process.env.NEXT_PUBLIC_ENV_DOMAIN}/${
-            props.layoutSection
-          }/${props.layoutSlug ? props.layoutSlug + "/" : ""}`}
-        />
         <CategoryPageSEOConstructor
           categoryPageTitle={props.layoutTitle}
           categoryPageExcerpt={props.layoutDescription}
           categoryPageSectionSlug={props.layoutSection}
           categoryPageSlug={props.layoutSlug}
+        />
+        <link
+          rel="canonical"
+          href={`https://${process.env.NEXT_PUBLIC_ENV_DOMAIN}/${
+            props.layoutSection
+          }/${props.layoutSlug ? props.layoutSlug + "/" : ""}`}
         />
       </Head>
       <Header />
