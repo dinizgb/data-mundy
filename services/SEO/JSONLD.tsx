@@ -5,7 +5,7 @@ import React from "react";
  * @param {any} data to the tag.
  * @return {TSX.Element}: With a JSON LD script tag.
  */
-export default function JSONLD(data: any) {
+export default function JSONLD({ data }: { data: any }) {
   return (
     <script
       type="application/ld+json"
