@@ -10,16 +10,24 @@ import htmlTagCleaner from "utils/htmlTagCleaner";
  * @return {TSX.Element}: The TSX code for the Specials Content Page.
  */
 export default function SpecialsArticlePage({ response }) {
-  const specialData = response[0];
+  const specialData = response;
 
   return (
     <>
       <SpecialFormat
-        specialTitle={specialData.title.rendered}
-        specialExcerpt={htmlTagCleaner(specialData.excerpt.rendered)}
-        specialDate={specialData.modified}
-        specialFeaturedImage={specialData.featured_media_url}
-        specialACFData={specialData.ACF}
+        singlePageTitle={specialData.title}
+        singlePageExcerpt={htmlTagCleaner(specialData.title)}
+        singlePageSectionName={"Specials"}
+        singlePageSectionSlug={"specials"}
+        singlePageCategoryName={""}
+        singlePageCategorySlug={""}
+        singlePageSlug={specialData.slug}
+        singlePageDate={specialData.date}
+        singlePageModifiedDate={specialData.modified}
+        singlePageFeaturedImage={specialData.featured_media_url}
+        singlePageAuthor={"Data Mundy Staff"}
+        singlePageContent={specialData.content}
+        singlePageCustomCSS={specialData.web_stories_custom_css}
       />
     </>
   );
@@ -27,10 +35,18 @@ export default function SpecialsArticlePage({ response }) {
 
 // eslint-disable-next-line require-jsdoc
 export async function getStaticProps(context) {
-  return fetchSingle("specials", `slug=${context.params.slug}`);
+  return fetchSingle(
+    "web-stories",
+    `slug=${context.params.slug}`,
+    `${process.env.NEXT_PUBLIC_ENV_WP_AMP_API_BASE_PATH}`
+  );
 }
 
 // eslint-disable-next-line require-jsdoc
 export async function getStaticPaths() {
-  return fetchPaths("specials", 2);
+  return fetchPaths(
+    "web-stories",
+    2,
+    `${process.env.NEXT_PUBLIC_ENV_WP_AMP_API_BASE_PATH}`
+  );
 }

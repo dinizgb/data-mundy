@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 import React from "react";
-import LayoutCardGalleryList from "components/Lists/LayoutCardGalleryList";
+import LayoutCardGallery from "components/Layouts/LayoutCardGallery";
 import { fetchSingle } from "services/core/fetchSingle";
 
 /**
@@ -9,7 +9,7 @@ import { fetchSingle } from "services/core/fetchSingle";
  */
 export default function SpecialsHome({ response }) {
   return (
-    <LayoutCardGalleryList
+    <LayoutCardGallery
       postData={response}
       layoutSection={`specials`}
       layoutTitle={`Specials`}
@@ -21,5 +21,9 @@ export default function SpecialsHome({ response }) {
 
 // eslint-disable-next-line require-jsdoc
 export async function getStaticProps() {
-  return fetchSingle("specials", "per_page=10");
+  return fetchSingle(
+    "web-stories",
+    "per_page=10",
+    `${process.env.NEXT_PUBLIC_ENV_WP_AMP_API_BASE_PATH}`
+  );
 }

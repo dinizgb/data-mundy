@@ -11,7 +11,7 @@ import SpecialThumbCard from "components/Cards/SpecialThumbCard";
 import TopFiveNews from "components/Widgets/TopFiveNews";
 import DonateWidget from "components/Widgets/DonateWidget";
 
-type LayoutListWithAsideProps = {
+type LayoutCardGalleryProps = {
   postData: any;
   layoutSection: string;
   layoutTitle: string;
@@ -24,7 +24,7 @@ type LayoutListWithAsideProps = {
  * @param {any} props to the component.
  * @return {TSX.Element}: The TSX code with a list of Big Horizontal Cards.
  */
-export default function LayoutCardGalleryList(props: LayoutListWithAsideProps) {
+export default function LayoutCardGallery(props: LayoutCardGalleryProps) {
   const postList = props.postData;
 
   return (
@@ -94,7 +94,7 @@ export default function LayoutCardGalleryList(props: LayoutListWithAsideProps) {
                           key={slug}
                           cardImage={featured_media_url}
                           cardSection={props.layoutSection}
-                          cardTitle={title.rendered}
+                          cardTitle={title}
                           cardSlug={slug}
                           margin={`0 0 30px 0`}
                         />
