@@ -5,14 +5,13 @@
  */
 export default function specialHeadConstructor(props: any) {
   let head = props.webStoriesHead;
+  const sourceCanonicalUrl = `https://${process.env.NEXT_PUBLIC_ENV_WP_API_ROOT_PATH}/web-stories/`;
 
   head = head.replace("<head>", " ").replace("</head>", "");
-  const sourceCanonicalUrl = `https://${process.env.NEXT_PUBLIC_ENV_WP_API_ROOT_PATH}/web-stories/`;
-  head = head.replaceAll(
+  head = head.replace(
     new RegExp(sourceCanonicalUrl, "g"),
     `https://${process.env.NEXT_PUBLIC_ENV_DOMAIN}/specials/`
   );
-  head = head.replaceAll("My Blog", "Data Mundy");
 
   return head;
 }
