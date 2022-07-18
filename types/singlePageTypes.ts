@@ -11,5 +11,4 @@ export interface SinglePageProps {
   singlePageFeaturedImage: string;
   singlePageAuthor: string;
   singlePageContent: string;
-  singlePageCustomCSS?: string;
 }

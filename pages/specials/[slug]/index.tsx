@@ -3,7 +3,6 @@ import React from "react";
 import SpecialFormat from "components/Layouts/SpecialFormat";
 import { fetchSingle } from "services/core/fetchSingle";
 import { fetchPaths } from "services/core/fetchPaths";
-import htmlTagCleaner from "utils/htmlTagCleaner";
 
 /**
  * Special Content Page.
@@ -15,19 +14,8 @@ export default function SpecialsArticlePage({ response }) {
   return (
     <>
       <SpecialFormat
-        singlePageTitle={specialData.title}
-        singlePageExcerpt={htmlTagCleaner(specialData.title)}
-        singlePageSectionName={"Specials"}
-        singlePageSectionSlug={"specials"}
-        singlePageCategoryName={""}
-        singlePageCategorySlug={""}
-        singlePageSlug={specialData.slug}
-        singlePageDate={specialData.date}
-        singlePageModifiedDate={specialData.modified}
-        singlePageFeaturedImage={specialData.featured_media_url}
-        singlePageAuthor={"Data Mundy Staff"}
-        singlePageContent={specialData.content}
-        singlePageCustomCSS={specialData.web_stories_custom_css}
+        webStoriesHead={specialData.head}
+        webStoriesContent={specialData.content}
       />
     </>
   );
