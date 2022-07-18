@@ -10,6 +10,7 @@ import { WhiteButton } from "components/Inputs/Buttons";
 import TopFiveNews from "components/Widgets/TopFiveNews";
 import DonateWidget from "components/Widgets/DonateWidget";
 import BigHorizontalCardList from "components/Lists/BigHorizontalCardList";
+import ScrollCarousel from "components/Carousels/ScrollCarousel";
 
 type LayoutHomePageProps = {
   postData: any;
@@ -128,6 +129,20 @@ export default function LayoutHomePage(props: LayoutHomePageProps) {
             >
               <Grid item xs={12} sm={12} md={8}>
                 <Grid container>
+                  <Grid item xs={12} style={{ marginTop: 40 }}>
+                    <H2
+                      fontColor={({ theme }) => theme.colors.text_4}
+                      fontWeight={600}
+                      fontSize={22}
+                      lineHeight={21}
+                      xsFontSize={21}
+                      xsLineHeight={24}
+                      margin={`0 0 30px 0`}
+                    >
+                      Latest Specials
+                    </H2>
+                    <ScrollCarousel />
+                  </Grid>
                   <Grid item xs={12} style={{ marginTop: 40 }}>
                     <H2
                       fontColor={({ theme }) => theme.colors.text_4}
