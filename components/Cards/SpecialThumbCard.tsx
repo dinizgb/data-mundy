@@ -6,11 +6,11 @@ import { H3, FaviconText } from "components/Texts/Typographies";
 
 const SpecialThumbCardWrapper = styled.div<SpecialThumbCardWrapperProps>`
   width: 100%;
-  min-height: 450px;
+  min-height: 500px;
   position: relative;
   margin: ${(props) => props.margin};
   background: ${({ theme }) => theme.colors.secondary}
-    url(${(props) => props.cardImage}) 50% 50% no-repeat;
+    url(${(props) => props.cardImage}) 25% 15% no-repeat;
 `;
 
 const SpecialThumbCardText = styled.div`
@@ -18,24 +18,26 @@ const SpecialThumbCardText = styled.div`
   height: 100%;
   position: absolute;
   background: rgba(0, 0, 0, 0.4);
-  text-align: right;
+  text-align: left;
   h3 {
-    font-family: "Bebas Neue", cursive;
+    font-family: "Teko", sans-serif;
     position: absolute;
     bottom: 5px;
     text-transform: uppercase;
-    letter-spacing: 2px;
   }
   em {
     position: absolute;
     top: 15px;
-    right: 15px;
+    left: 15px;
   }
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}px) {
-    width: 90%;
-    margin-top: 10px;
+    width: 100%;
     margin-left: auto;
     margin-right: auto;
+    h3 {
+      font-size: 50px;
+      line-height: 55px;
+    }
   }
 `;
 
