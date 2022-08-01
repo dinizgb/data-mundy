@@ -33,13 +33,13 @@ export async function fetchSingleByCategory(
     const reqSingle = await fetch(
       `https://${basePathDomain}/${singleEndpoint}?${singleBaseParam}=${categoryData[0].id}&${singleOtherParams}`
     );
-    const listSingleData = await reqSingle.json();
 
-    if (listSingleData.length == 0) {
+    if (reqSingle == null) {
       return {
         notFound: true,
       };
     } else {
+      const listSingleData = await reqSingle.json();
       return {
         props: {
           categoryData,

@@ -8,8 +8,6 @@ import Header from "components/Tags/Header";
 import Footer from "components/Tags/Footer";
 import { H2, P } from "components/Texts/Typographies";
 import SpecialThumbCard from "components/Cards/SpecialThumbCard";
-import TopFiveNews from "components/Widgets/TopFiveNews";
-import DonateWidget from "components/Widgets/DonateWidget";
 
 type LayoutCardGalleryProps = {
   postData: any;
@@ -44,7 +42,7 @@ export default function LayoutCardGallery(props: LayoutCardGalleryProps) {
         <meta name="twitter:text:title" content={props.layoutTitle} />
         <link
           rel="canonical"
-          href={`https://datamundy.com/${props.layoutSection}/${props.layoutSlug}`}
+          href={`https://datamundy.com/${props.layoutSection}/${props.layoutSlug}/`}
         />
       </Head>
       <Header />
@@ -85,7 +83,7 @@ export default function LayoutCardGallery(props: LayoutCardGalleryProps) {
           </Box>
           <Box sx={{ width: "100%" }}>
             <Grid container columnSpacing={{ xs: 1, sm: 3, md: 5 }}>
-              <Grid item xs={12} sm={12} md={8}>
+              <Grid item xs={12}>
                 <Grid container columnSpacing={{ xs: 1, sm: 2, md: 4 }}>
                   {postList.map(({ featured_media_url, title, slug }) => {
                     return (
@@ -93,7 +91,7 @@ export default function LayoutCardGallery(props: LayoutCardGalleryProps) {
                         item
                         xs={12}
                         sm={6}
-                        md={4}
+                        md={3}
                         style={{ marginBottom: 10 }}
                         key={slug}
                       >
@@ -109,10 +107,6 @@ export default function LayoutCardGallery(props: LayoutCardGalleryProps) {
                     );
                   })}
                 </Grid>
-              </Grid>
-              <Grid item xs={12} sm={12} md={4}>
-                <TopFiveNews margin={`0 0 0 0`} xsMargin={`20px 0 0 0`} />
-                <DonateWidget margin={`30px 0 0 0`} />
               </Grid>
             </Grid>
           </Box>
