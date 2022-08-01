@@ -35,9 +35,11 @@ const MenuBlock = styled.div`
 `;
 
 const MenuTitle = styled.span`
-  font-size: 20px;
+  font-family: "Playfair Display", serif;
+  font-size: 24px;
   font-weight: bold;
-  letter-spacing: 2px;
+  letter-spacing: 3px;
+  border-bottom: 3px solid;
   padding: 8px 0;
   margin-left: 40px;
   color: ${({ theme }) => theme.colors.text_4};
@@ -47,6 +49,7 @@ const MenuList = styled.ul`
   display: flex;
   flex-direction: column;
   align-items: start;
+  margin-top: 20px;
 `;
 
 const MenuItem = styled.li`
@@ -124,22 +127,6 @@ export default function MobileMenu(props: MobileMenuProps) {
             <MenuList>
               <MenuItem>
                 <a href="/specials/">Check out our Special Contents</a>
-              </MenuItem>
-            </MenuList>
-          </MenuBlock>
-          <MenuBlock>
-            <MenuTitle>Follow us</MenuTitle>
-            <MenuList>
-              <MenuItem>
-                <a href="#">Instagram</a>
-              </MenuItem>
-            </MenuList>
-          </MenuBlock>
-          <MenuBlock>
-            <MenuTitle>Talk with us</MenuTitle>
-            <MenuList>
-              <MenuItem>
-                <a href="#">Email</a>
               </MenuItem>
             </MenuList>
           </MenuBlock>

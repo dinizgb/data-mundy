@@ -11,7 +11,8 @@ export default function Home(props: any) {
   return (
     <LayoutHomePage
       postData={props.lastFiveNews}
-      chartData={props.lastFiveChart}
+      TopFiveWidgetData={props.lastFiveChart}
+      TopFiveWidgetTitle={`Latest Charts`}
       layoutDescription={
         "Data Mundy is an open source platform that provides different types of data to make scientific divulgation more easy for those who do it."
       }
