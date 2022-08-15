@@ -7,14 +7,15 @@ import Header from "components/Tags/Header";
 import Footer from "components/Tags/Footer";
 import { H2, P, A } from "components/Texts/Typographies";
 import { WhiteButton } from "components/Inputs/Buttons";
-import TopFiveNews from "components/Widgets/TopFiveNews";
-import DonateWidget from "components/Widgets/DonateWidget";
+import TopFiveWidget from "components/Widgets/TopFiveWidget";
 import BigHorizontalCardList from "components/Lists/BigHorizontalCardList";
 import ScrollCarousel from "components/Carousels/ScrollCarousel";
 
 type LayoutHomePageProps = {
   postData: any;
-  chartData: any;
+  TopFiveWidgetData: any;
+  carouselData: any;
+  TopFiveWidgetTitle: string;
   layoutDescription: string;
 };
 
@@ -141,7 +142,7 @@ export default function LayoutHomePage(props: LayoutHomePageProps) {
                     >
                       Latest Specials
                     </H2>
-                    <ScrollCarousel />
+                    <ScrollCarousel carouselData={props.carouselData} />
                   </Grid>
                   <Grid item xs={12} style={{ marginTop: 40 }}>
                     <H2
@@ -153,16 +154,16 @@ export default function LayoutHomePage(props: LayoutHomePageProps) {
                       xsLineHeight={24}
                       margin={`0 0 30px 0`}
                     >
-                      Latest Charts
+                      Latest News
                     </H2>
                     <BigHorizontalCardList
-                      postList={props.chartData}
-                      layoutSection={"charts"}
+                      postList={props.postData}
+                      layoutSection={"news"}
                     />
                     <Grid item xs={12} className="desktop-only">
                       <div style={{ display: "flex" }}>
                         <WhiteButton
-                          href="/charts/"
+                          href="/news/"
                           width={`100%`}
                           margin={`0 0 30px 0`}
                         >
@@ -174,8 +175,12 @@ export default function LayoutHomePage(props: LayoutHomePageProps) {
                 </Grid>
               </Grid>
               <Grid item xs={12} sm={12} md={4}>
-                <TopFiveNews margin={`40px 0 0 0`} xsMargin={`20px 0 0 0`} />
-                <DonateWidget margin={`30px 0 0 0`} />
+                <TopFiveWidget
+                  title={props.TopFiveWidgetTitle}
+                  data={props.TopFiveWidgetData}
+                  margin={`40px 0 0 0`}
+                  xsMargin={`20px 0 0 0`}
+                />
               </Grid>
             </Grid>
           </Box>

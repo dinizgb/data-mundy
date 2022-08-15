@@ -5,12 +5,15 @@ import { fetchSingle } from "services/core/fetchSingle";
 
 /**
  * News Index Page.
+ * @param {any} props Data Fetched.
  * @return {TSX.Element}: The TSX code for the News Index Page.
  */
-export default function NewsHome({ response }) {
+export default function NewsHome(props: any) {
   return (
     <LayoutListWithAside
-      postData={response}
+      postData={props.newsData}
+      TopFiveWidgetData={props.lastFiveCharts}
+      TopFiveWidgetTitle={`Top five charts`}
       layoutSection={`news`}
       layoutTitle={`News`}
       layoutSlug={``}
@@ -21,5 +24,16 @@ export default function NewsHome({ response }) {
 
 // eslint-disable-next-line require-jsdoc
 export async function getStaticProps() {
-  return fetchSingle("posts", "per_page=10");
+  const newsData = await fetchSingle("posts", "per_page=10");
+  const lastFiveCharts = await fetchSingle("charts", "per_page=5");
+
+  const newsResponse = newsData.props.response;
+  const chartsResponse = lastFiveCharts.props.response;
+
+  return {
+    props: {
+      newsData: newsResponse,
+      lastFiveCharts: chartsResponse,
+    },
+  };
 }

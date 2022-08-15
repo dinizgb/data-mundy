@@ -28,6 +28,8 @@ const NavLi = styled.li`
   display: flex;
   padding: 0 0 0 25px;
   a {
+    font-family: "Playfair Display", serif;
+    letter-spacing: 0.5px;
     color: #fff;
     font-weight: 500;
     text-decoration: none;

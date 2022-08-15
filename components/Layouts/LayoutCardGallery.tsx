@@ -8,8 +8,6 @@ import Header from "components/Tags/Header";
 import Footer from "components/Tags/Footer";
 import { H2, P } from "components/Texts/Typographies";
 import SpecialThumbCard from "components/Cards/SpecialThumbCard";
-import TopFiveNews from "components/Widgets/TopFiveNews";
-import DonateWidget from "components/Widgets/DonateWidget";
 
 type LayoutCardGalleryProps = {
   postData: any;
@@ -44,7 +42,7 @@ export default function LayoutCardGallery(props: LayoutCardGalleryProps) {
         <meta name="twitter:text:title" content={props.layoutTitle} />
         <link
           rel="canonical"
-          href={`https://datamundy.com/${props.layoutSection}/${props.layoutSlug}`}
+          href={`https://datamundy.com/${props.layoutSection}/${props.layoutSlug}/`}
         />
       </Head>
       <Header />
@@ -85,11 +83,18 @@ export default function LayoutCardGallery(props: LayoutCardGalleryProps) {
           </Box>
           <Box sx={{ width: "100%" }}>
             <Grid container columnSpacing={{ xs: 1, sm: 3, md: 5 }}>
-              <Grid item xs={12} sm={12} md={8}>
-                <Grid container>
-                  <Grid item xs={12} sm={6} md={4} style={{ marginTop: 41 }}>
-                    {postList.map(({ featured_media_url, title, slug }) => {
-                      return (
+              <Grid item xs={12}>
+                <Grid container columnSpacing={{ xs: 1, sm: 2, md: 4 }}>
+                  {postList.map(({ featured_media_url, title, slug }) => {
+                    return (
+                      <Grid
+                        item
+                        xs={12}
+                        sm={6}
+                        md={3}
+                        style={{ marginBottom: 10 }}
+                        key={slug}
+                      >
                         <SpecialThumbCard
                           key={slug}
                           cardImage={featured_media_url}
@@ -98,14 +103,10 @@ export default function LayoutCardGallery(props: LayoutCardGalleryProps) {
                           cardSlug={slug}
                           margin={`0 0 30px 0`}
                         />
-                      );
-                    })}
-                  </Grid>
+                      </Grid>
+                    );
+                  })}
                 </Grid>
-              </Grid>
-              <Grid item xs={12} sm={12} md={4}>
-                <TopFiveNews margin={`40px 0 0 0`} xsMargin={`20px 0 0 0`} />
-                <DonateWidget margin={`30px 0 0 0`} />
               </Grid>
             </Grid>
           </Box>

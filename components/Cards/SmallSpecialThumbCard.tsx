@@ -4,16 +4,16 @@ import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
 import { H3, FaviconText } from "components/Texts/Typographies";
 
-const SpecialThumbCardWrapper = styled.div<SpecialThumbCardWrapperProps>`
+const SmallSpecialThumbCardWrapper = styled.div<SmallSpecialThumbCardWrapperProps>`
   width: 100%;
-  min-height: 500px;
+  min-height: 390px;
   position: relative;
   margin: ${(props) => props.margin};
   background: ${({ theme }) => theme.colors.secondary}
     url(${(props) => props.cardImage}) 25% 15% no-repeat;
 `;
 
-const SpecialThumbCardText = styled.div`
+const SmallSpecialThumbCardText = styled.div`
   width: 100%;
   height: 100%;
   position: absolute;
@@ -35,13 +35,13 @@ const SpecialThumbCardText = styled.div`
     margin-left: auto;
     margin-right: auto;
     h3 {
-      font-size: 50px;
-      line-height: 55px;
+      font-size: 36px;
+      line-height: 42px;
     }
   }
 `;
 
-type SpecialThumbCardProps = {
+type SmallSpecialThumbCardProps = {
   key: string;
   cardImage: string;
   cardSection: string;
@@ -50,7 +50,7 @@ type SpecialThumbCardProps = {
   margin?: any;
 };
 
-type SpecialThumbCardWrapperProps = {
+type SmallSpecialThumbCardWrapperProps = {
   margin?: any;
   cardImage: string;
 };
@@ -60,26 +60,28 @@ type SpecialThumbCardWrapperProps = {
  * @param {any} props to the component.
  * @return {TSX.Element}: The TSX code for the Special Thumb Card Card Component.
  */
-export default function SpecialThumbCard(props: SpecialThumbCardProps) {
+export default function SmallSpecialThumbCard(
+  props: SmallSpecialThumbCardProps
+) {
   return (
     <a href={`/${props.cardSection}/${props.cardSlug}/`}>
-      <SpecialThumbCardWrapper
+      <SmallSpecialThumbCardWrapper
         margin={props.margin}
         cardImage={props.cardImage}
       >
         <Box sx={{ width: "100%" }}>
           <Grid container columnSpacing={{ xs: 1, sm: 3, md: 4 }}>
             <Grid item xs={12}>
-              <SpecialThumbCardText>
+              <SmallSpecialThumbCardText>
                 <Grid container>
                   <Grid item xs={12}>
                     <FaviconText
                       fontColor={({ theme }) => theme.colors.text_4}
                       fontWeight={700}
-                      fontSize={24}
-                      lineHeight={24}
-                      xsFontSize={24}
-                      xsLineHeight={24}
+                      fontSize={20}
+                      lineHeight={20}
+                      xsFontSize={20}
+                      xsLineHeight={20}
                       margin={0}
                     >
                       DM.
@@ -87,21 +89,21 @@ export default function SpecialThumbCard(props: SpecialThumbCardProps) {
                     <H3
                       fontColor={({ theme }) => theme.colors.text_4}
                       fontWeight={800}
-                      fontSize={48}
-                      lineHeight={54}
+                      fontSize={36}
+                      lineHeight={42}
                       xsFontSize={28}
-                      xsLineHeight={44}
+                      xsLineHeight={36}
                       margin={`5px 15px`}
                     >
                       {props.cardTitle}
                     </H3>
                   </Grid>
                 </Grid>
-              </SpecialThumbCardText>
+              </SmallSpecialThumbCardText>
             </Grid>
           </Grid>
         </Box>
-      </SpecialThumbCardWrapper>
+      </SmallSpecialThumbCardWrapper>
     </a>
   );
 }

@@ -1,11 +1,12 @@
 import React from "react";
 import styled from "styled-components";
+import Image from "next/image";
 import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
 import { H3, H4 } from "components/Texts/Typographies";
-import Image from "next/image";
+import formatDate from "utils/formatDate";
 
-const SmallHorizontalCardWrapper = styled.div<SmallHorizontalCardProps>`
+const SmallHorizontalCardWrapper = styled.div<SmallHorizontalCardCssProps>`
   width: 100%;
   position: relative;
   margin: ${(props) => props.margin};
@@ -23,7 +24,15 @@ const SmallHorizontalCardThumb = styled.div`
   }
 `;
 
+type SmallHorizontalCardCssProps = {
+  margin?: any;
+};
+
 type SmallHorizontalCardProps = {
+  cardTitle: string;
+  cardDate: string;
+  cardImage: string;
+  cardLink: string;
   margin?: any;
 };
 
@@ -34,15 +43,15 @@ type SmallHorizontalCardProps = {
  */
 export default function SmallHorizontalCard(props: SmallHorizontalCardProps) {
   return (
-    <a href="https://www.google.com/">
+    <a href={props.cardLink}>
       <SmallHorizontalCardWrapper margin={props.margin}>
         <Box sx={{ width: "100%" }}>
           <Grid container columnSpacing={{ xs: 1, sm: 2, md: 2 }}>
             <Grid item xs={12} sm={6} md={5}>
               <SmallHorizontalCardThumb>
                 <Image
-                  src={"/images/image-placeholder.jpg"}
-                  alt={`Card Alt`}
+                  src={props.cardImage}
+                  alt={props.cardTitle}
                   layout="fill"
                   objectFit="cover"
                 />
@@ -60,8 +69,7 @@ export default function SmallHorizontalCard(props: SmallHorizontalCardProps) {
                     xsLineHeight={24}
                     margin={`20px 0 0 0`}
                   >
-                    Data Mundy releases a website to users to help them find the
-                    best data sources
+                    {props.cardTitle}
                   </H3>
                   <H4
                     fontColor={({ theme }) => theme.colors.text_2}
@@ -72,7 +80,7 @@ export default function SmallHorizontalCard(props: SmallHorizontalCardProps) {
                     xsLineHeight={24}
                     margin={`5px 0 0 0`}
                   >
-                    Lorem ipsum dolor sit amet...
+                    {formatDate(props.cardDate)}
                   </H4>
                 </Grid>
               </Grid>
