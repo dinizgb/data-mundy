@@ -4,7 +4,8 @@
  * @param {string} categoryParams to the category request.
  * @param {string} singleEndpoint with the single endpoint to be fetched.
  * @param {string} singleBaseParam to the single request.
- * @param {string} singleOtherParams to the single request
+ * @param {string} singleOtherParams to the single request.
+ * @param {string} alternativeBasePath to the request.
  * @return {object}: returns an object with the data according to the response.
  */
 export async function fetchSingleByCategory(
@@ -12,10 +13,15 @@ export async function fetchSingleByCategory(
   categoryParams: string,
   singleEndpoint: string,
   singleBaseParam: string,
-  singleOtherParams: string
+  singleOtherParams: string,
+  alternativeBasePath?: string
 ) {
+  const basePathDomain = alternativeBasePath
+    ? alternativeBasePath
+    : process.env.NEXT_PUBLIC_ENV_WP_API_BASE_PATH;
+
   const reqCategory = await fetch(
-    `https://${process.env.NEXT_PUBLIC_ENV_WP_API_BASE_PATH}/${categoryEndpoint}?${categoryParams}`
+    `https://${basePathDomain}/${categoryEndpoint}?${categoryParams}`
   );
   const categoryData = await reqCategory.json();
 
@@ -25,15 +31,15 @@ export async function fetchSingleByCategory(
     };
   } else {
     const reqSingle = await fetch(
-      `https://${process.env.NEXT_PUBLIC_ENV_WP_API_BASE_PATH}/${singleEndpoint}?${singleBaseParam}=${categoryData[0].id}&${singleOtherParams}`
+      `https://${basePathDomain}/${singleEndpoint}?${singleBaseParam}=${categoryData[0].id}&${singleOtherParams}`
     );
-    const listSingleData = await reqSingle.json();
 
-    if (listSingleData.length == 0) {
+    if (reqSingle == null) {
       return {
         notFound: true,
       };
     } else {
+      const listSingleData = await reqSingle.json();
       return {
         props: {
           categoryData,

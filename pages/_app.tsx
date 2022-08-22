@@ -2,6 +2,8 @@
 import React from "react";
 import { ThemeProvider } from "styled-components";
 import GlobalStyle from "../styles/global-style";
+import { Provider } from "react-redux";
+import { store } from "redux/store";
 
 export const theme = {
   colors: {
@@ -34,11 +36,11 @@ export const theme = {
 // eslint-disable-next-line require-jsdoc
 export default function App({ Component, pageProps }) {
   return (
-    <>
+    <Provider store={store}>
       <ThemeProvider theme={theme}>
         <GlobalStyle />
         <Component {...pageProps} />
       </ThemeProvider>
-    </>
+    </Provider>
   );
 }

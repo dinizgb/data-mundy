@@ -7,11 +7,13 @@ import Header from "components/Tags/Header";
 import Footer from "components/Tags/Footer";
 import { H2, P } from "components/Texts/Typographies";
 import BigHorizontalCardList from "components/Lists/BigHorizontalCardList";
-import TopFiveNews from "components/Widgets/TopFiveNews";
-import DonateWidget from "components/Widgets/DonateWidget";
+import TopFiveWidget from "components/Widgets/TopFiveWidget";
+import CategoryPageSEOConstructor from "services/SEO/CategoryPageSEOConstructor";
 
 type LayoutListWithAsideProps = {
   postData: any;
+  TopFiveWidgetData: any;
+  TopFiveWidgetTitle: string;
   layoutSection: string;
   layoutTitle: string;
   layoutSlug: string;
@@ -30,20 +32,19 @@ export default function LayoutListWithAside(props: LayoutListWithAsideProps) {
     <>
       <Head>
         <title>
-          Data Mundy | {props.layoutTitle} | Providing Data from and to an
-          amazing World
+          {props.layoutTitle} | Data Mundy | {props.layoutDescription}
         </title>
-        <meta name="description" content={props.layoutDescription} />
-        <meta
-          property="og:title"
-          content={`Data Mundy | ${props.layoutTitle} | Providing Data from and to an amazing World`}
-          key="title"
+        <CategoryPageSEOConstructor
+          categoryPageTitle={props.layoutTitle}
+          categoryPageExcerpt={props.layoutDescription}
+          categoryPageSectionSlug={props.layoutSection}
+          categoryPageSlug={props.layoutSlug}
         />
-        <meta property="og:description" content={props.layoutDescription} />
-        <meta name="twitter:text:title" content={props.layoutTitle} />
         <link
           rel="canonical"
-          href={`https://datamundy.com/${props.layoutSection}/${props.layoutSlug}`}
+          href={`https://${process.env.NEXT_PUBLIC_ENV_DOMAIN}/${
+            props.layoutSection
+          }/${props.layoutSlug ? props.layoutSlug + "/" : ""}`}
         />
       </Head>
       <Header />
@@ -87,16 +88,24 @@ export default function LayoutListWithAside(props: LayoutListWithAsideProps) {
               <Grid item xs={12} sm={12} md={8}>
                 <Grid container>
                   <Grid item xs={12} style={{ marginTop: 41 }}>
-                    <BigHorizontalCardList
-                      postList={postList}
-                      layoutSection={props.layoutSection}
-                    />
+                    {postList.length == 0 ? (
+                      `No data available`
+                    ) : (
+                      <BigHorizontalCardList
+                        postList={postList}
+                        layoutSection={props.layoutSection}
+                      />
+                    )}
                   </Grid>
                 </Grid>
               </Grid>
               <Grid item xs={12} sm={12} md={4}>
-                <TopFiveNews margin={`40px 0 0 0`} xsMargin={`20px 0 0 0`} />
-                <DonateWidget margin={`30px 0 0 0`} />
+                <TopFiveWidget
+                  title={props.TopFiveWidgetTitle}
+                  data={props.TopFiveWidgetData}
+                  margin={`40px 0 0 0`}
+                  xsMargin={`20px 0 0 0`}
+                />
               </Grid>
             </Grid>
           </Box>

@@ -3,6 +3,7 @@ import React from "react";
 import ArticleFormat from "components/Layouts/ArticleFormat";
 import { fetchSingle } from "services/core/fetchSingle";
 import { fetchPaths } from "services/core/fetchPaths";
+import htmlTagCleaner from "utils/htmlTagCleaner";
 
 /**
  * News Article Page.
@@ -15,12 +16,17 @@ export default function NewsArticlePage({ response }) {
     <>
       <ArticleFormat
         articleTitle={articleData.title.rendered}
-        articleExcerpt={articleData.title.rendered}
+        articleExcerpt={htmlTagCleaner(articleData.excerpt.rendered)}
+        articleSectionName={"News"}
+        articleSectionSlug={"news"}
         articleCategoryName={articleData.categories_data[0].category_name}
         articleCategorySlug={articleData.categories_data[0].category_slug}
+        articleSlug={articleData.slug}
+        articleDate={articleData.date}
+        articleModifiedDate={articleData.modified}
+        articleAuthor={"Data Mundy Staff"} // TODO: Add author data on API response
         articleFeaturedImage={articleData.featured_media_url}
         articleContent={articleData.content.rendered}
-        articleDate={articleData.date}
       />
     </>
   );
