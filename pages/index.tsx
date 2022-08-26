@@ -8,7 +8,6 @@ import { fetchSingle } from "services/core/fetchSingle";
  * @return {TSX.Element}: The TSX code for the Home Page.
  */
 export default function Home(props: any) {
-  console.log("PROPS:", props);
   return (
     <LayoutHomePage
       postData={props.lastFiveNews}
