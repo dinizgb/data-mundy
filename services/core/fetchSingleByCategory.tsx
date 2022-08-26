@@ -20,8 +20,28 @@ export async function fetchSingleByCategory(
     ? alternativeBasePath
     : process.env.NEXT_PUBLIC_ENV_WP_API_BASE_PATH;
 
+  const authReq = await fetch(
+    new Request(`https://${process.env.NEXT_PUBLIC_ENV_WP_AUTH_PATH}`, {
+      method: "POST",
+      body: JSON.stringify({
+        username: process.env.API_USER,
+        password: process.env.API_PASS,
+      }),
+      headers: new Headers({
+        "Content-Type": "application/json",
+      }),
+    })
+  ).then((r) => r.json());
+
   const reqCategory = await fetch(
-    `https://${basePathDomain}/${categoryEndpoint}?${categoryParams}`
+    `https://${basePathDomain}/${categoryEndpoint}?${categoryParams}`,
+    {
+      method: "GET",
+      headers: new Headers({
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${authReq.jwt_token}`,
+      }),
+    }
   );
   const categoryData = await reqCategory.json();
 
@@ -31,7 +51,14 @@ export async function fetchSingleByCategory(
     };
   } else {
     const reqSingle = await fetch(
-      `https://${basePathDomain}/${singleEndpoint}?${singleBaseParam}=${categoryData[0].id}&${singleOtherParams}`
+      `https://${basePathDomain}/${singleEndpoint}?${singleBaseParam}=${categoryData[0].id}&${singleOtherParams}`,
+      {
+        method: "GET",
+        headers: new Headers({
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${authReq.jwt_token}`,
+        }),
+      }
     );
 
     if (reqSingle == null) {
