@@ -13,6 +13,7 @@ export const theme = {
     secondary: "#252525",
     secondary_hover: "#292929",
     subtitle: "#999",
+    subtitle_2: "#999",
     text_1: "#333",
     text_2: "#aaa",
     text_3: "#ccc",
