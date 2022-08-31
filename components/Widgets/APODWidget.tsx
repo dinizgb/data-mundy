@@ -75,9 +75,9 @@ export default function APODWidget(props: APODWidgetWrapperProps) {
         xsLineHeight={24}
         margin={`5px 20px 10px 20px`}
       >
-        Image Credit: {props.data.copyright}
+        Image Credit: {props.data.copyright ? props.data.copyright : "NASA"}
       </Span>
-      <a href="https://apod.nasa.gov/apod/" target="_blank" rel="noreferrer">
+      <a href="/nasa-apod/">
         <APODWidgetImage>
           <Image
             src={props.data.url}
