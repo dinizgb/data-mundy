@@ -10,7 +10,7 @@ const nextConfig = {
 
 module.exports = {
   images: {
-    domains: ["wp.crdps.xyz"],
+    domains: ["wp.crdps.xyz", "apod.nasa.gov"],
   },
   i18n: {
     locales: ["eng", "US"],

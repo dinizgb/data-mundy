@@ -123,10 +123,12 @@ export default function MobileMenu(props: MobileMenuProps) {
             </MenuList>
           </MenuBlock>
           <MenuBlock>
-            <MenuTitle>Specials</MenuTitle>
             <MenuList>
               <MenuItem>
-                <a href="/specials/">Check out our Special Contents</a>
+                <a href="/specials/">Specials</a>
+              </MenuItem>
+              <MenuItem>
+                <a href="/nasa-apod/">APOD (NASA)</a>
               </MenuItem>
             </MenuList>
           </MenuBlock>

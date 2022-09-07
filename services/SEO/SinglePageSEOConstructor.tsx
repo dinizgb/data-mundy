@@ -6,9 +6,9 @@ type SinglePageSEOConstructorProps = {
   singlePageExcerpt: string;
   singlePageSectionName: string;
   singlePageSectionSlug: string;
-  singlePageCategoryName: string;
-  singlePageCategorySlug: string;
-  singlePageSlug: string;
+  singlePageCategoryName?: string;
+  singlePageCategorySlug?: string;
+  singlePageSlug?: string;
   singlePageDate: string;
   singlePageModifiedDate: string;
   singlePageFeaturedImage: string;
@@ -24,6 +24,11 @@ type SinglePageSEOConstructorProps = {
 export default function SinglePageSEOConstructor(
   props: SinglePageSEOConstructorProps
 ) {
+  const canonical = `https://${process.env.NEXT_PUBLIC_ENV_DOMAIN}/${
+    props.singlePageSectionSlug
+  }/${props.singlePageCategorySlug ? props.singlePageCategorySlug + "/" : ""}${
+    props.singlePageSlug ? props.singlePageSlug + "/" : ""
+  }`;
   return (
     <>
       <meta name="description" content={props.singlePageExcerpt} />
@@ -34,10 +39,7 @@ export default function SinglePageSEOConstructor(
         key="title"
       />
       <meta property="og:description" content={props.singlePageExcerpt} />
-      <meta
-        property="og:url"
-        content={`https://${process.env.NEXT_PUBLIC_ENV_DOMAIN}/${props.singlePageSectionSlug}/${props.singlePageSlug}/`}
-      />
+      <meta property="og:url" content={canonical} />
       <meta property="og:image" content={props.singlePageFeaturedImage} />
       <link itemProp="thumbnailUrl" href={props.singlePageFeaturedImage} />
       <meta property="og:image:width" content="400" />
@@ -59,14 +61,7 @@ export default function SinglePageSEOConstructor(
       <meta name="twitter:image:alt" content={props.singlePageExcerpt} />
       <meta name="twitter:card" content="summary_large_image" />
       <link rel="preload" href={props.singlePageFeaturedImage} as="image" />
-      <link
-        rel="canonical"
-        href={`https://${process.env.NEXT_PUBLIC_ENV_DOMAIN}/${props.singlePageSectionSlug}/${props.singlePageCategorySlug}/${props.singlePageSlug}/`}
-      />
-      <link
-        rel="amphtml"
-        href={`https://${process.env.NEXT_PUBLIC_ENV_DOMAIN}/${props.singlePageSectionSlug}/${props.singlePageCategorySlug}/${props.singlePageSlug}/amp/`}
-      />
+      <link rel="canonical" href={canonical} />
       <JSONLD
         data={{
           "@context": "https://schema.org/",
@@ -84,18 +79,28 @@ export default function SinglePageSEOConstructor(
               name: props.singlePageSectionName,
               item: `https://${process.env.NEXT_PUBLIC_ENV_DOMAIN}/${props.singlePageSectionSlug}/`,
             },
-            {
-              "@type": "ListItem",
-              position: 3,
-              name: props.singlePageCategoryName,
-              item: `https://${process.env.NEXT_PUBLIC_ENV_DOMAIN}/${props.singlePageSectionSlug}/${props.singlePageCategorySlug}/`,
-            },
-            {
-              "@type": "ListItem",
-              position: 4,
-              name: props.singlePageTitle,
-              item: `https://${process.env.NEXT_PUBLIC_ENV_DOMAIN}/${props.singlePageSectionSlug}/${props.singlePageCategorySlug}/${props.singlePageSlug}/`,
-            },
+            props.singlePageCategorySlug
+              ? {
+                  "@type": "ListItem",
+                  position: 3,
+                  name: props.singlePageCategoryName,
+                  item: `https://${process.env.NEXT_PUBLIC_ENV_DOMAIN}/${props.singlePageSectionSlug}/${props.singlePageCategorySlug}/`,
+                }
+              : {},
+            props.singlePageSlug
+              ? {
+                  "@type": "ListItem",
+                  position: props.singlePageCategorySlug ? 4 : 3,
+                  name: props.singlePageTitle,
+                  item: `https://${process.env.NEXT_PUBLIC_ENV_DOMAIN}/${
+                    props.singlePageSectionSlug
+                  }/${
+                    props.singlePageCategorySlug
+                      ? props.singlePageCategorySlug + "/"
+                      : ""
+                  }${props.singlePageSlug}/`,
+                }
+              : {},
           ],
         }}
       />

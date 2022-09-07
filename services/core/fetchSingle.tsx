@@ -14,7 +14,26 @@ export async function fetchSingle(
     ? alternativeBasePath
     : process.env.NEXT_PUBLIC_ENV_WP_API_BASE_PATH;
 
-  const req = await fetch(`https://${basePathDomain}/${endpoint}?${params}`);
+  const authReq = await fetch(
+    new Request(`https://${process.env.NEXT_PUBLIC_ENV_WP_AUTH_PATH}`, {
+      method: "POST",
+      body: JSON.stringify({
+        username: process.env.API_USER,
+        password: process.env.API_PASS,
+      }),
+      headers: new Headers({
+        "Content-Type": "application/json",
+      }),
+    })
+  ).then((r) => r.json());
+
+  const req = await fetch(`https://${basePathDomain}/${endpoint}?${params}`, {
+    method: "GET",
+    headers: new Headers({
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${authReq.jwt_token}`,
+    }),
+  });
   const response = await req.json();
 
   if (response.length == 0) {

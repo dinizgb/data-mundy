@@ -8,6 +8,7 @@ import Footer from "components/Tags/Footer";
 import { H2, P, A } from "components/Texts/Typographies";
 import { WhiteButton } from "components/Inputs/Buttons";
 import TopFiveWidget from "components/Widgets/TopFiveWidget";
+import APODWidget from "components/Widgets/APODWidget";
 import BigHorizontalCardList from "components/Lists/BigHorizontalCardList";
 import ScrollCarousel from "components/Carousels/ScrollCarousel";
 
@@ -15,6 +16,7 @@ type LayoutHomePageProps = {
   postData: any;
   TopFiveWidgetData: any;
   carouselData: any;
+  apodData: any;
   TopFiveWidgetTitle: string;
   layoutDescription: string;
 };
@@ -175,10 +177,11 @@ export default function LayoutHomePage(props: LayoutHomePageProps) {
                 </Grid>
               </Grid>
               <Grid item xs={12} sm={12} md={4}>
+                <APODWidget data={props.apodData} />
                 <TopFiveWidget
                   title={props.TopFiveWidgetTitle}
                   data={props.TopFiveWidgetData}
-                  margin={`40px 0 0 0`}
+                  margin={`35px 0 0 0`}
                   xsMargin={`20px 0 0 0`}
                 />
               </Grid>
