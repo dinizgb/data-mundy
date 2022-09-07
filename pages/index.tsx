@@ -46,6 +46,6 @@ export async function getStaticProps() {
       lastSpecials: specialResponse,
       apod: apodResponse,
     },
-    revalidate: 43200,
+    revalidate: 21600,
   };
 }

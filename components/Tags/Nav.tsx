@@ -88,6 +88,9 @@ export default function Nav() {
         <NavLi>
           <a href="/specials/">Specials</a>
         </NavLi>
+        <NavLi>
+          <a href="/nasa-apod/">APOD (NASA)</a>
+        </NavLi>
         <NavLiMobile onClick={handleToggleMobileMenu}>
           <MenuIcon />
         </NavLiMobile>
