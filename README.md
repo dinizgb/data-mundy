@@ -25,62 +25,43 @@ And insert this on this file:
     API_USER=main
     API_PASS=pass
 
-## Running the tests
+## Development Guidelines
+1 - This project follows some simples rules to standardize variable and file names:
+- ```camelCase``` for variables and functions
+- ```PascalCase``` for function components
+- ```UPPER_SNAKE_CASE``` for Environment variables, enums and magic numbers.
 
-Explain how to run the automated tests for this system
+2 - Always use absolute imports;
+3 - Don’t Repeat Yourself (DRY);
 
-### Sample Tests
+## Branch names rules
 
-Explain what these tests test and why
+This project contains 6 types of code changes availables for the open source contributors:
+```
+- BugFix
+- CleanUp
+- Documentation
+- Feature
+- HotFix
+- Security
+```
 
-    Give an example
+So after finding the purpose of your branch, the pattern to name it should be ```TYPE/BRANCH_NAME```.
 
-### Style test
+For example, a branch with the purpose to fix a security fail in the auth logic, should be named as ```Security/Auth_Logic_Fix```. 
 
-Checks if the best practices and the right coding style has been used.
+## Pull requests rules
 
-    Give an example
+Pull Requests title must be self-explanatory. For example, using the example above ```Auth Logic Fix```.
 
-## Deployment
+And pull requests should also be marked with one of the available labels corresponding to ```TYPE``` of code change:
+```
+- BugFix
+- CleanUp
+- Documentation
+- Feature
+- HotFix
+- Security
+```
 
-Add additional notes to deploy this on a live system
-
-## Built With
-
-  - [Contributor Covenant](https://www.contributor-covenant.org/) - Used
-    for the Code of Conduct
-  - [Creative Commons](https://creativecommons.org/) - Used to choose
-    the license
-
-## Contributing
-
-Please read [CONTRIBUTING.md](CONTRIBUTING.md) for details on our code
-of conduct, and the process for submitting pull requests to us.
-
-## Versioning
-
-We use [Semantic Versioning](http://semver.org/) for versioning. For the versions
-available, see the [tags on this
-repository](https://github.com/PurpleBooth/a-good-readme-template/tags).
-
-## Authors
-
-  - **Billie Thompson** - *Provided README Template* -
-    [PurpleBooth](https://github.com/PurpleBooth)
-
-See also the list of
-[contributors](https://github.com/PurpleBooth/a-good-readme-template/contributors)
-who participated in this project.
-
-## License
-
-This project is licensed under the [CC0 1.0 Universal](LICENSE.md)
-Creative Commons License - see the [LICENSE.md](LICENSE.md) file for
-details
-
-## Acknowledgments
-
-  - Hat tip to anyone whose code is used
-  - Inspiration
-  - etc
-
+That is it. Thanks for help us! Happy coding 🙂
