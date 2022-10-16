@@ -16,11 +16,14 @@ After the installation finishes create a file named:
 
 And insert this on this file:
 
-    NEXT_PUBLIC_ENV_APOD_API_PATH=api.nasa.gov/planetary/apod?api_key=VygF8mIKpdNyR7HmbiVvuVi6hR2qKQheOUvUrxam
-    NEXT_PUBLIC_ENV_WP_AUTH_PATH=0
-    API_PASS=0
-    API_USER=0
+    NEXT_PUBLIC_ENV_DOMAIN=datamundy.com
     NEXT_PUBLIC_ENV_WP_API_ROOT_PATH=opensource.datamundy.com
+    NEXT_PUBLIC_ENV_WP_API_BASE_PATH=opensource.datamundy.com
+    NEXT_PUBLIC_ENV_WP_AMP_API_BASE_PATH=wp.crdps.xyz/wp-json/crdps/v1
+    NEXT_PUBLIC_ENV_WP_AUTH_PATH=opensource.datamundy.com/token
+    NEXT_PUBLIC_ENV_APOD_API_PATH=api.nasa.gov/planetary/apod?api_key=VygF8mIKpdNyR7HmbiVvuVi6hR2qKQheOUvUrxam
+    API_USER=main
+    API_PASS=pass
 
 ## Running the tests
 
