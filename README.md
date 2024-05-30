@@ -22,8 +22,8 @@ And insert this on this file:
     NEXT_PUBLIC_ENV_WP_AMP_API_BASE_PATH=wp.crdps.xyz/wp-json/crdps/v1
     NEXT_PUBLIC_ENV_WP_AUTH_PATH=opensource.datamundy.com/token
     NEXT_PUBLIC_ENV_APOD_API_PATH=api.nasa.gov/planetary/apod?api_key=VygF8mIKpdNyR7HmbiVvuVi6hR2qKQheOUvUrxam
-    API_USER=main
-    API_PASS=pass
+    API_USER=uauth
+    API_PASS=6TX[eU+2pQ&c%8kTo]>!C_yvJ?*({iYG3b1}^.D
 
 ## Development Guidelines
 1 - This project follows some simples rules to standardize variable and file names:
