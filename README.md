@@ -32,6 +32,7 @@ And insert this on this file:
 - ```UPPER_SNAKE_CASE``` for Environment variables, enums and magic numbers.
 
 2 - Always use absolute imports;
+
 3 - Don’t Repeat Yourself (DRY);
 
 ## Branch names rules
